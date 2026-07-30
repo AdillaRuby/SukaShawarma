@@ -20,31 +20,30 @@ export default function MenuCard({ item, index = 0 }: MenuCardProps) {
         ease: [0.16, 1, 0.3, 1],
       }}
       className="group flex flex-col bg-white rounded-2xl overflow-hidden
-                 shadow-[0_2px_12px_rgba(0,0,0,0.06)]
-                 hover:shadow-[0_8px_32px_rgba(0,0,0,0.10)]
-                 transition-shadow duration-300"
+                 shadow-layered-sm hover:shadow-layered-lg hover:-translate-y-1
+                 transition-all duration-300 transform-gpu z-[50] relative"
     >
-      {/* Image — 4:3 */}
-      <div className="relative aspect-[4/3] overflow-hidden bg-[#FAF7F2]">
+      {/* Image — 4:3 (Layer 2) */}
+      <div className="relative aspect-[4/3] overflow-hidden bg-[#FAF7F2] z-[20]">
         <img
           src={item.image}
           alt={item.name}
           className="w-full h-full object-cover
-                     group-hover:scale-[1.03]
-                     transition-transform duration-500 ease-out"
+                     group-hover:scale-[1.04]
+                     transition-transform duration-500 ease-out transform-gpu"
         />
-        {/* Best Seller badge */}
+        {/* Best Seller badge (Layer 3) */}
         {item.isBestSeller && (
-          <div className="absolute top-3 left-3 bg-[#FFC500] text-[#111111]
+          <div className="absolute top-3 left-3 z-[30] bg-[#FFC500] text-[#111111]
                           text-[10px] font-bold tracking-wider uppercase
-                          px-2.5 py-1 rounded-full shadow-sm">
+                          px-2.5 py-1 rounded-full shadow-sm backdrop-blur-sm">
             Best Seller
           </div>
         )}
       </div>
 
-      {/* Content */}
-      <div className="flex flex-col flex-1 p-4">
+      {/* Content (Layer 4 & 6) */}
+      <div className="flex flex-col flex-1 p-4 relative z-[40]">
         <h3
           className="font-bold text-[#111111] text-sm
                      tracking-wide uppercase leading-snug mb-2"
@@ -61,7 +60,7 @@ export default function MenuCard({ item, index = 0 }: MenuCardProps) {
         <a
           href="https://order.sukashawarma.com/"
           className="text-xs font-semibold text-[#FE7108] hover:text-[#e56507]
-                     transition-colors duration-150 mt-auto"
+                     transition-colors duration-150 mt-auto relative z-[60]"
         >
           Pesan →
         </a>

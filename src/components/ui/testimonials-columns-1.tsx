@@ -42,13 +42,13 @@ export const TestimonialsColumn = (props: {
           ease: "linear",
           repeatType: "loop",
         }}
-        className="flex flex-col gap-6 pb-6"
+        className="flex flex-col gap-6 pb-6 transform-gpu will-change-transform"
       >
         {[...new Array(2).fill(0).map((_, index) => (
           <React.Fragment key={index}>
             {props.testimonials.map(({ text, image, name, role, rating }, i) => (
               <div
-                className="p-8 rounded-3xl border border-gray-100 shadow-lg shadow-[#6E1A10]/5 max-w-xs w-full bg-white"
+                className="p-8 rounded-3xl border border-gray-100 shadow-layered-md hover:shadow-layered-lg hover:-translate-y-1 transition-all duration-300 max-w-xs w-full bg-white transform-gpu z-[50] relative"
                 key={i}
               >
                 <StarRating rating={rating} />
@@ -61,7 +61,7 @@ export const TestimonialsColumn = (props: {
                     height={40}
                     src={image}
                     alt={name}
-                    className="h-10 w-10 rounded-full object-cover"
+                    className="h-10 w-10 rounded-full object-cover shadow-sm"
                   />
                   <div className="flex flex-col">
                     <div className="font-semibold text-sm tracking-tight leading-5 text-[#111111]">

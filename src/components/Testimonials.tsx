@@ -67,18 +67,21 @@ const thirdColumn = testimonials.slice(5, 7);
 export default function Testimonials() {
   return (
     <section className="bg-[#FAF7F2] py-20 lg:py-28 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 z-10 relative">
+      {/* Layer 1 (z-[10]): Ambient background warmth glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] rounded-full bg-[#FE7108]/5 blur-3xl pointer-events-none z-[10]" />
 
-        {/* Section header */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 z-[20] relative">
+
+        {/* Section header (Layer 4) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           viewport={{ once: true }}
-          className="flex flex-col items-center justify-center max-w-[540px] mx-auto mb-12"
+          className="flex flex-col items-center justify-center max-w-[540px] mx-auto mb-12 relative z-[40]"
         >
           <div className="flex justify-center mb-3">
-            <div className="border border-[#6E1A10]/30 py-1 px-4 rounded-lg text-[#6E1A10] text-xs font-semibold tracking-wider uppercase">
+            <div className="border border-[#6E1A10]/30 py-1 px-4 rounded-lg text-[#6E1A10] text-xs font-semibold tracking-wider uppercase backdrop-blur-sm">
               Testimoni
             </div>
           </div>
@@ -90,8 +93,8 @@ export default function Testimonials() {
           </p>
         </motion.div>
 
-        {/* Scrolling columns */}
-        <div className="flex justify-center gap-6 mt-6 [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)] max-h-[740px] overflow-hidden">
+        {/* Scrolling columns (Layer 5) */}
+        <div className="flex justify-center gap-6 mt-6 [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)] max-h-[740px] overflow-hidden relative z-[50]">
           <TestimonialsColumn testimonials={firstColumn} duration={15} />
           <TestimonialsColumn
             testimonials={secondColumn}

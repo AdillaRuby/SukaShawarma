@@ -54,26 +54,37 @@ export default function FounderStory() {
   const totalH = ROW_H * 3 + GAP * 2; // 3 baris penuh = 504px
 
   return (
-    <section id="about" className="py-20 lg:py-28 bg-[#FAF7F2]">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="about" className="relative py-20 lg:py-28 bg-[#FAF7F2] overflow-hidden">
+      {/* Layer 1 (z-[10]): Ambient warm backdrop glow */}
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 rounded-full bg-[#FE7108]/5 blur-3xl pointer-events-none z-[10]" />
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-[20]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-          {/* ── Sisi kiri: bento grid 3 kolom, semua explicit height ── */}
+          {/* ── Sisi kiri: bento grid 3 kolom dengan floating badge ── */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="relative"
           >
-            {/*
-              3 kolom, lebar sama.
-              Kol 1: 3 foto @ 1 row masing-masing
-              Kol 2: 1 foto tall (2 row) + 1 foto (1 row)
-              Kol 3: 1 foto (1 row) + 1 foto tall (2 row)
-            */}
+            {/* Layer 3 (z-[30]): Floating stats pill accent */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="absolute -top-4 -right-2 md:-right-6 z-[30] bg-white/95 backdrop-blur-md px-4 py-2 rounded-full shadow-layered-md border border-black/[0.06] text-xs font-semibold text-[#6E1A10] flex items-center gap-2 transform-gpu"
+            >
+              <span className="w-2 h-2 rounded-full bg-[#FE7108]" />
+              Est. 12 Mei 2024
+            </motion.div>
+
+            {/* 3 kolom bento grid */}
             <div
               style={{ height: totalH, gap: GAP }}
-              className="grid grid-cols-3"
+              className="grid grid-cols-3 rounded-2xl overflow-hidden shadow-layered-md transform-gpu z-[20] relative"
             >
               {/* KOLOM KIRI — 3 × 1 row */}
               <div style={{ gap: GAP }} className="flex flex-col">
@@ -96,13 +107,13 @@ export default function FounderStory() {
             </div>
           </motion.div>
 
-          {/* ── Sisi kanan: teks ── */}
+          {/* ── Sisi kanan: teks editorial (Layer 4) ── */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col justify-center"
+            className="flex flex-col justify-center relative z-[40]"
           >
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#FE7108] mb-4">
               FOUNDER & OUR BEGINNING

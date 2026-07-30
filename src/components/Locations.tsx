@@ -16,16 +16,19 @@ const OutletMap = dynamic(() => import("./OutletMap"), {
 
 export default function Locations() {
   return (
-    <section id="locations" className="py-20 lg:py-28 bg-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="locations" className="relative py-20 lg:py-28 bg-white overflow-hidden">
+      {/* Layer 1 (z-[10]): Ambient warmth backdrop glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[450px] rounded-full bg-[#6E1A10]/5 blur-3xl pointer-events-none z-[10]" />
 
-        {/* Section header */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-[20]">
+
+        {/* Section header (Layer 4) */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-10"
+          className="mb-10 relative z-[40]"
         >
           <p className="text-xs font-semibold tracking-[0.22em] uppercase text-[#FE7108] mb-3">
             Temukan Kami
@@ -41,16 +44,22 @@ export default function Locations() {
           </div>
         </motion.div>
 
-        {/* Map — hero of this section */}
+        {/* Map Container (Layer 5) with Floating Pill (Layer 3) */}
         <motion.div
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="relative w-full h-[780px] rounded-[28px] overflow-hidden
-                     shadow-[0_24px_80px_rgba(0,0,0,0.12)]
-                     border border-black/[0.04]"
+                     shadow-layered-lg
+                     border border-black/[0.04] z-[50] transform-gpu"
         >
+          {/* Floating Outlet Count Pill (Layer 3) */}
+          <div className="absolute top-5 right-5 z-[30] bg-white/95 backdrop-blur-md px-4 py-2 rounded-full shadow-layered-md border border-black/[0.06] text-xs font-semibold text-[#111111] flex items-center gap-2 pointer-events-none transform-gpu">
+            <span className="w-2 h-2 rounded-full bg-[#FE7108] animate-pulse" />
+            20+ Outlet Active
+          </div>
+
           <OutletMap outlets={outlets} />
         </motion.div>
 
@@ -60,7 +69,7 @@ export default function Locations() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center text-xs text-[#111111]/30 mt-5"
+          className="text-center text-xs text-[#111111]/40 mt-5 relative z-[40]"
         >
           Klik marker untuk detail outlet · Gunakan scroll untuk zoom · Geser untuk jelajahi
         </motion.p>
