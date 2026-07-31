@@ -4,27 +4,46 @@ import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
-const slides = [
+const allSlides = [
   {
     image: "/hero1.png",
-    bg: "#FAF7F2",          // krem — cocok dgn bg putih gambar
+    bg: "#FAF7F2",
     objectPosition: "40% center",
+    desktopOnly: false,
   },
   {
     image: "/hero3.png",
     bg: "#FAFAFA",
     objectPosition: "center center",
+    desktopOnly: false,
   },
   {
     image: "/hero2.png",
     bg: "#F0EDEA",
     objectPosition: "center top",
+    desktopOnly: true,   // hanya tampil di desktop (≥768px)
   },
 ];
 
 export default function HeroCarousel() {
   const [current, setCurrent] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(true);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const handler = (e: MediaQueryListEvent) => {
+      setIsDesktop(e.matches);
+      setCurrent(0); // reset index saat breakpoint berubah
+    };
+    setIsDesktop(mq.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  const slides = isDesktop
+    ? allSlides
+    : allSlides.filter((s) => !s.desktopOnly);
 
   const next = useCallback(() => {
     setCurrent((c) => (c + 1) % slides.length);
