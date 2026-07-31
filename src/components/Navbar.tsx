@@ -89,6 +89,8 @@ export default function Navbar() {
           </a>
           <a
             href="https://order.sukashawarma.com/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#FE7108] text-white text-[13px] font-semibold hover:bg-[#e56507] active:scale-[0.97] transition-all duration-150"
           >
             Pesan Sekarang
@@ -121,6 +123,8 @@ export default function Navbar() {
           <div className="mt-3 pt-3 border-t border-black/[0.06]">
             <a
               href="https://order.sukashawarma.com/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center justify-center px-5 py-3 rounded-full bg-[#FE7108] text-white text-[14px] font-semibold hover:bg-[#e56507] transition-colors"
             >
               Pesan Sekarang

@@ -62,6 +62,8 @@ function OutletCard({ outlet, index }: { outlet: Outlet; index: number }) {
           </a>
           <a
             href={outlet.orderUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center
                        h-10 rounded-full
                        bg-[#FE7108] text-white
@@ -91,7 +93,7 @@ export default function OutletGrid({ outlets }: { outlets: Outlet[] }) {
 
   // Filter — search + city, both applied
   const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
+    const q = query.trim().toLowerCase().slice(0, 100);
     return outlets.filter((o) => {
       const matchesSearch =
         !q ||
@@ -133,6 +135,7 @@ export default function OutletGrid({ outlets }: { outlets: Outlet[] }) {
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#111111]/40 pointer-events-none" />
           <input
             type="text"
+            maxLength={100}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Cari nama outlet, kota, atau kecamatan..."

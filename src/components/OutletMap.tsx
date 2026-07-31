@@ -156,7 +156,7 @@ function SearchBar({
 
   const results = useMemo(() => {
     if (!query.trim()) return [];
-    const q = query.toLowerCase();
+    const q = query.toLowerCase().slice(0, 100);
     return outlets.filter(
       (o) =>
         o.name.toLowerCase().includes(q) ||
@@ -185,6 +185,7 @@ function SearchBar({
         <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#111111]/40 pointer-events-none" />
         <input
           type="text"
+          maxLength={100}
           value={query}
           onChange={(e) => {
             setQuery(e.target.value);

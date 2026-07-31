@@ -5,9 +5,18 @@ import OutletGrid from "@/components/OutletGrid";
 import { outlets } from "@/data/outlets";
 
 export const metadata: Metadata = {
-  title: "Lokasi",
+  title: "Lokasi Outlet Terdekat",
   description:
-    "Temukan outlet Suka Shawarma terdekat di Bogor, Depok, Jakarta, Bekasi, dan Tangerang Selatan.",
+    "Temukan outlet Suka Shawarma terdekat di Bogor, Depok, Jakarta, Bekasi, dan Tangerang Selatan. 20+ cabang aktif siap melayani kamu.",
+  alternates: {
+    canonical: "/locations",
+  },
+  openGraph: {
+    title: "Lokasi Outlet Suka Shawarma - 20+ Cabang Jabodetabek",
+    description:
+      "Temukan alamat lengkap, jam operasional, dan petunjuk lokasi outlet Suka Shawarma di sekitar kamu.",
+    url: "/locations",
+  },
 };
 
 export default function LocationsPage() {
