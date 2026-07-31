@@ -119,7 +119,7 @@ export default function MenuPage() {
               <span className="text-[#6E1A10]">Favorit Kamu</span>
             </h1>
             <p className="text-[#111111]/55 text-base max-w-lg mx-auto leading-relaxed">
-              Dari shawarma original hingga varian spesial — semua tersedia segar setiap hari.
+              Dari shawarma original hingga varian spesial, semua tersedia segar setiap hari.
             </p>
           </div>
         </section>

@@ -8,7 +8,6 @@ import { Menu, X } from "lucide-react";
 const navLinks = [
   { label: "Beranda", href: "/" },
   { label: "Menu", href: "/menu" },
-  { label: "Tentang Kami", href: "#about" },
   { label: "Lokasi", href: "/locations" },
   { label: "Kontak", href: "#contact" },
 ];

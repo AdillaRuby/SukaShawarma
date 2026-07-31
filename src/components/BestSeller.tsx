@@ -9,7 +9,7 @@ const bestSellers = [
   {
     id: "ori-ayam-besar",
     name: "ORIGINAL AYAM BESAR",
-    description: "Shawarma ayam ukuran besar — lebih banyak lebih puas",
+    description: "Shawarma ayam ukuran besar, lebih banyak lebih puas",
     image: "/menus/SS_ORI_AYAM.png",
   },
   {

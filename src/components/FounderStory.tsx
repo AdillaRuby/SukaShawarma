@@ -2,25 +2,21 @@
 
 import { motion } from "motion/react";
 
-// Tinggi tiap row dalam px — semua foto pakai nilai yang sama
-const ROW_H = 164; // px per row
-const GAP = 6;     // px gap antar foto
+const ROW_H = 164;
+const GAP = 6;
 
 function Photo({
   src,
   alt,
-  caption,
   rowSpan = 1,
   delay = 0,
 }: {
   src: string;
   alt: string;
-  caption: string;
   rowSpan?: number;
   delay?: number;
 }) {
   const height = ROW_H * rowSpan + GAP * (rowSpan - 1);
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
@@ -35,115 +31,105 @@ function Photo({
         src={src}
         alt={alt}
         className="absolute inset-0 w-full h-full object-cover
-                   transition-transform duration-500 ease-out
-                   group-hover:scale-[1.04]"
+                   transition-transform duration-500 ease-out group-hover:scale-[1.04]"
       />
-      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-colors duration-500" />
-      <div className="absolute bottom-0 inset-x-0 px-3 pb-3 pt-10
-                      bg-gradient-to-t from-black/60 to-transparent
-                      opacity-0 translate-y-1
-                      group-hover:opacity-100 group-hover:translate-y-0
-                      transition-all duration-300 ease-out">
-        <p className="text-white text-[11px] font-medium tracking-wide">{caption}</p>
-      </div>
+      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500" />
     </motion.div>
   );
 }
 
 export default function FounderStory() {
-  const totalH = ROW_H * 3 + GAP * 2; // 3 baris penuh = 504px
+  const totalH = ROW_H * 3 + GAP * 2;
 
   return (
-    <section id="about" className="relative py-20 lg:py-28 bg-[#FAF7F2] overflow-hidden">
-      {/* Layer 1 (z-[10]): Ambient warm backdrop glow */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 rounded-full bg-[#FE7108]/5 blur-3xl pointer-events-none z-[10]" />
+    <section
+      id="about"
+      className="relative bg-[#FAF7F2] pt-24 pb-0 overflow-visible"
+      style={{
+        borderTopLeftRadius: "clamp(48px, 8vw, 112px)",
+        borderTopRightRadius: "clamp(48px, 8vw, 112px)",
+        marginTop: "-72px",
+        zIndex: 10,
+        position: "relative",
+      }}
+    >
+      {/* Ambient glow */}
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full
+                      bg-[#FE7108]/[0.04] blur-[120px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-[20]">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 relative">
+
+        {/* Content grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-          {/* ── Sisi kiri: bento grid 3 kolom dengan floating badge ── */}
+          {/* Left — photo grid */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 0, x: -32 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="relative"
           >
-            {/* Layer 3 (z-[30]): Floating stats pill accent */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="absolute -top-4 -right-2 md:-right-6 z-[30] bg-white/95 backdrop-blur-md px-4 py-2 rounded-full shadow-layered-md border border-black/[0.06] text-xs font-semibold text-[#6E1A10] flex items-center gap-2 transform-gpu"
-            >
-              <span className="w-2 h-2 rounded-full bg-[#FE7108]" />
-              Est. 12 Mei 2024
-            </motion.div>
-
-            {/* 3 kolom bento grid */}
             <div
               style={{ height: totalH, gap: GAP }}
-              className="grid grid-cols-3 rounded-2xl overflow-hidden shadow-layered-md transform-gpu z-[20] relative"
+              className="grid grid-cols-3 rounded-2xl overflow-hidden
+                         shadow-[0_16px_48px_rgba(0,0,0,0.12)]"
             >
-              {/* KOLOM KIRI — 3 × 1 row */}
               <div style={{ gap: GAP }} className="flex flex-col">
-                <Photo src="/founderstory/Screenshot 2026-07-30 092535.png" alt="Outlet" caption="" rowSpan={1} delay={0} />
-                <Photo src="/founderstory/Screenshot 2026-07-30 090804.png" alt="Suasana" caption="" rowSpan={1} delay={0.08} />
-                <Photo src="/founderstory/Screenshot 2026-07-30 092501.png" alt="Detail" caption="" rowSpan={1} delay={0.16} />
+                <Photo src="/founderstory/Screenshot 2026-07-30 092535.png" alt="Outlet" rowSpan={1} delay={0} />
+                <Photo src="/founderstory/Screenshot 2026-07-30 090804.png" alt="Suasana" rowSpan={1} delay={0.08} />
+                <Photo src="/founderstory/Screenshot 2026-07-30 092501.png" alt="Detail" rowSpan={1} delay={0.16} />
               </div>
-
-              {/* KOLOM TENGAH — 2 row tall + 1 row */}
               <div style={{ gap: GAP }} className="flex flex-col">
-                <Photo src="/founder.jpeg" alt="Founder" caption="" rowSpan={2} delay={0.04} />
-                <Photo src="/founderstory/Screenshot 2026-07-30 090825.png" alt="Proses" caption="" rowSpan={1} delay={0.12} />
+                <Photo src="/founder.jpeg" alt="Founder" rowSpan={2} delay={0.04} />
+                <Photo src="/founderstory/Screenshot 2026-07-30 090825.png" alt="Proses" rowSpan={1} delay={0.12} />
               </div>
-
-              {/* KOLOM KANAN — 1 row + 2 row tall */}
               <div style={{ gap: GAP }} className="flex flex-col">
-                <Photo src="/founderstory/Screenshot 2026-07-30 090740.png" alt="Opening" caption="" rowSpan={1} delay={0.08} />
-                <Photo src="/founderstory/Screenshot 2026-07-30 090656.png" alt="Bahan segar" caption="" rowSpan={2} delay={0.16} />
+                <Photo src="/founderstory/Screenshot 2026-07-30 090740.png" alt="Opening" rowSpan={1} delay={0.08} />
+                <Photo src="/founderstory/Screenshot 2026-07-30 090656.png" alt="Bahan segar" rowSpan={2} delay={0.16} />
               </div>
             </div>
           </motion.div>
 
-          {/* ── Sisi kanan: teks editorial (Layer 4) ── */}
+          {/* Right — text */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: 32 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col justify-center relative z-[40]"
+            className="flex flex-col justify-center pt-6 lg:pt-12"
           >
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#FE7108] mb-4">
               FOUNDER & OUR BEGINNING
             </p>
 
-            <h2 className="text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight text-[#111111] mb-6">
+            <h2
+              className="font-heading text-4xl md:text-5xl font-bold
+                         leading-[1.1] tracking-tight text-[#111111] mb-6"
+              style={{ fontFamily: "var(--font-heading)" }}
+            >
               Akbar Alatas memulai perjalanan Suka Shawarma dari satu outlet sederhana di{" "}
               <span className="text-[#6E1A10]">Empang, Bogor</span>
             </h2>
 
             <div className="space-y-4 text-[#111111]/70 leading-relaxed text-base">
               <p>
-                Pada <strong>12 Mei 2024</strong>, Akbar Alatas mendirikan Suka Shawarma
-                dengan visi menghadirkan shawarma berkualitas yang autentik, modern, dan
-                terjangkau untuk semua kalangan. Perjalanan tersebut dimulai dari outlet
-                pertama di kawasan Empang, Bogor — sebuah gerai sederhana yang menjadi
-                titik awal lahirnya brand ini.
+                Pada <strong className="text-[#111111]">12 Mei 2024</strong>, Akbar Alatas
+                mendirikan Suka Shawarma dengan visi menghadirkan shawarma berkualitas
+                yang autentik, modern, dan terjangkau untuk semua kalangan. Dimulai dari
+                satu gerai sederhana di Empang, Bogor.
               </p>
               <p>
                 Berbekal komitmen terhadap kualitas bahan baku, cita rasa yang konsisten,
-                serta pelayanan yang ramah, outlet pertama tersebut berhasil mendapatkan
-                kepercayaan pelanggan. Dari sana, Suka Shawarma terus berkembang hingga
-                memiliki puluhan outlet yang tersebar di berbagai wilayah Jabodetabek,
-                tanpa meninggalkan nilai-nilai yang menjadi fondasi sejak hari pertama.
+                serta pelayanan yang ramah, Suka Shawarma terus berkembang hingga memiliki
+                puluhan outlet di seluruh Jabodetabek — tanpa meninggalkan nilai-nilai
+                yang menjadi fondasi sejak hari pertama.
               </p>
             </div>
           </motion.div>
-
         </div>
       </div>
+
     </section>
   );
 }
