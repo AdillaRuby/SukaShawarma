@@ -11,13 +11,16 @@ const arimo = Arimo({
 });
 
 export const metadata: Metadata = {
-  title: "Suka Shawarma — Otentik, Premium, Lezat",
+  title: {
+    default: "Suka Shawarma",
+    template: "%s - Suka Shawarma",
+  },
   description:
-    "Nikmati shawarma autentik Timur Tengah dengan bahan segar pilihan. Order sekarang dan rasakan kelezatan yang sesungguhnya.",
-  keywords: ["shawarma", "suka shawarma", "makanan timur tengah", "halal", "fast casual"],
+    "Nikmati shawarma berkualitas dengan bumbu rempah pilihan. Tersedia di 19+ outlet Jabodetabek.",
+  keywords: ["shawarma", "suka shawarma", "kebab", "halal", "fast casual", "bogor"],
   openGraph: {
     title: "Suka Shawarma",
-    description: "Shawarma autentik Timur Tengah — premium, segar, lezat.",
+    description: "Shawarma berkualitas, harga merakyat. 19+ outlet Jabodetabek.",
     type: "website",
   },
 };

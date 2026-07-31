@@ -3,18 +3,19 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "Beranda", href: "/" },
   { label: "Menu", href: "/menu" },
   { label: "Lokasi", href: "/locations" },
-  { label: "Kontak", href: "#contact" },
 ];
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handler = () => setIsScrolled(window.scrollY > 10);
@@ -47,16 +48,35 @@ export default function Navbar() {
 
         {/* Desktop nav links */}
         <ul className="hidden md:flex items-center gap-1">
-          {navLinks.map((link) => (
-            <li key={link.label}>
-              <Link
-                href={link.href}
-                className="px-3.5 py-2 rounded-lg text-[13px] font-medium text-[#111111]/60 hover:text-[#111111] hover:bg-black/[0.04] transition-all duration-150"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = link.href === "/"
+              ? pathname === "/"
+              : pathname.startsWith(link.href);
+            return (
+              <li key={link.label}>
+                <Link
+                  href={link.href}
+                  className={`relative px-3.5 py-2 rounded-lg text-[13px] font-medium
+                              transition-all duration-150 group
+                              ${isActive
+                                ? "text-[#6E1A10]"
+                                : "text-[#111111]/60 hover:text-[#111111] hover:bg-black/[0.04]"
+                              }`}
+                >
+                  {link.label}
+                  {/* Underline hover */}
+                  <span
+                    className={`absolute bottom-0.5 left-3.5 right-3.5 h-[1.5px] rounded-full
+                                bg-[#6E1A10] transition-all duration-200 origin-left
+                                ${isActive
+                                  ? "scale-x-100 opacity-100"
+                                  : "scale-x-0 opacity-0 group-hover:scale-x-100 group-hover:opacity-40"
+                                }`}
+                  />
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
         {/* CTA */}

@@ -5,7 +5,7 @@ import OutletGrid from "@/components/OutletGrid";
 import { outlets } from "@/data/outlets";
 
 export const metadata: Metadata = {
-  title: "Lokasi Outlet — Suka Shawarma",
+  title: "Lokasi",
   description:
     "Temukan outlet Suka Shawarma terdekat di Bogor, Depok, Jakarta, Bekasi, dan Tangerang Selatan.",
 };

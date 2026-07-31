@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import HeroCarousel from "@/components/HeroCarousel";
 import FounderStory from "@/components/FounderStory";
@@ -6,6 +7,12 @@ import AuthenticExperience from "@/components/AuthenticExperience";
 import Testimonials from "@/components/Testimonials";
 import Locations from "@/components/Locations";
 import Footer from "@/components/Footer";
+
+export const metadata: Metadata = {
+  title: "Beranda",
+  description:
+    "Nikmati shawarma berkualitas dengan bumbu rempah pilihan. Tersedia di 19+ outlet Jabodetabek.",
+};
 
 /**
  * SukaShawarma Homepage

@@ -20,15 +20,6 @@ function OutletCard({ outlet, index }: { outlet: Outlet; index: number }) {
                  hover:shadow-[0_12px_40px_rgba(0,0,0,0.12)]
                  transition-shadow duration-300"
     >
-      <div className="relative h-44 overflow-hidden bg-[#FAF7F2]">
-        <img
-          src={outlet.thumbnail}
-          alt={outlet.name}
-          className="w-full h-full object-cover
-                     group-hover:scale-[1.04] transition-transform duration-500 ease-out"
-        />
-      </div>
-
       <div className="p-5">
         <div className="flex items-start justify-between gap-2 mb-3">
           <h3

@@ -108,13 +108,14 @@ export default function FounderStory() {
                          leading-[1.1] tracking-tight text-[#111111] mb-6"
               style={{ fontFamily: "var(--font-heading)" }}
             >
-              Akbar Alatas memulai perjalanan Suka Shawarma dari satu outlet sederhana di{" "}
+              <span style={{ textDecoration: "underline", textDecorationColor: "#FE7108", textUnderlineOffset: "4px" }}>Akbar Alatas</span>{" "}
+              memulai perjalanan Suka Shawarma dari satu outlet sederhana di{" "}
               <span className="text-[#6E1A10]">Empang, Bogor</span>
             </h2>
 
             <div className="space-y-4 text-[#111111]/70 leading-relaxed text-base">
               <p>
-                Pada <strong className="text-[#111111]">12 Mei 2024</strong>, Akbar Alatas
+                Pada <strong className="text-[#111111]">12 Mei 2024</strong>, <strong className="text-[#111111]">Akbar Alatas</strong>{" "}
                 mendirikan Suka Shawarma dengan visi menghadirkan shawarma berkualitas
                 yang autentik, modern, dan terjangkau untuk semua kalangan. Dimulai dari
                 satu gerai sederhana di Empang, Bogor.
@@ -122,7 +123,7 @@ export default function FounderStory() {
               <p>
                 Berbekal komitmen terhadap kualitas bahan baku, cita rasa yang konsisten,
                 serta pelayanan yang ramah, Suka Shawarma terus berkembang hingga memiliki
-                puluhan outlet di seluruh Jabodetabek — tanpa meninggalkan nilai-nilai
+                puluhan outlet di seluruh Jabodetabek, tanpa meninggalkan nilai-nilai
                 yang menjadi fondasi sejak hari pertama.
               </p>
             </div>

@@ -49,18 +49,18 @@ function OutletCard({
       role="dialog"
       aria-label={`Detail outlet ${outlet.name}`}
     >
-      {/* Thumbnail */}
-      <div className="relative h-36 overflow-hidden">
-        <img
-          src={outlet.thumbnail}
-          alt={outlet.name}
-          className="w-full h-full object-cover"
-        />
-        {/* Close */}
+      {/* Close button */}
+      <div className="flex items-center justify-between px-5 pt-5 pb-3">
+        <h3
+          className="font-heading font-bold text-[#111111] text-base leading-snug"
+          style={{ fontFamily: "var(--font-heading)" }}
+        >
+          {outlet.name}
+        </h3>
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/30 backdrop-blur-sm
-                     flex items-center justify-center text-white hover:bg-black/50 transition-colors"
+          className="w-8 h-8 rounded-full bg-black/[0.06] flex items-center justify-center
+                     text-[#111111]/50 hover:bg-black/10 transition-colors shrink-0"
           aria-label="Tutup"
         >
           <X className="w-4 h-4" />
@@ -68,24 +68,16 @@ function OutletCard({
       </div>
 
       {/* Content */}
-      <div className="p-5">
-        {/* Name + rating */}
-        <div className="flex items-start justify-between gap-2 mb-3">
-          <h3
-            className="font-heading font-bold text-[#111111] text-base leading-snug"
-            style={{ fontFamily: "var(--font-heading)" }}
-          >
-            {outlet.name}
-          </h3>
-          <div className="flex items-center gap-1 shrink-0">
-            <Star className="w-3.5 h-3.5 fill-[#FFC500] text-[#FFC500]" />
-            <span className="text-xs font-semibold text-[#111111]">
-              {outlet.rating}
-            </span>
-            <span className="text-xs text-[#111111]/40">
-              ({outlet.reviewCount})
-            </span>
-          </div>
+      <div className="px-5 pb-5">
+        {/* Rating */}
+        <div className="flex items-center gap-1 mb-3">
+          <Star className="w-3.5 h-3.5 fill-[#FFC500] text-[#FFC500]" />
+          <span className="text-xs font-semibold text-[#111111]">
+            {outlet.rating}
+          </span>
+          <span className="text-xs text-[#111111]/40">
+            ({outlet.reviewCount})
+          </span>
         </div>
 
         {/* Address */}
@@ -97,14 +89,13 @@ function OutletCard({
         </div>
 
         {/* Hours */}
-        <div className="flex items-center gap-2 mb-6">
+        <div className="flex items-center gap-2 mb-5">
           <Clock className="w-3.5 h-3.5 text-[#6E1A10] shrink-0" />
           <p className="text-xs text-[#111111]/60">{outlet.openingHours}</p>
         </div>
 
         {/* Actions */}
-        <div className="flex gap-3 mt-6">
-          {/* View Maps — outlined, 42% width */}
+        <div className="flex gap-3">
           <a
             href={outlet.googleMapsUrl}
             target="_blank"
@@ -125,8 +116,6 @@ function OutletCard({
             <MapPin className="w-4 h-4 shrink-0" />
             View Maps
           </a>
-
-          {/* Order Now — filled orange, 58% width */}
           <a
             href={outlet.orderUrl}
             target="_blank"
