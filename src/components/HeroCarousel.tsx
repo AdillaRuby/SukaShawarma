@@ -5,9 +5,9 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 const slides = [
-  { image: "/hero1.png" },
-  { image: "/hero3.png" },
-  { image: "/hero2.png" },
+  { image: "/hero1.png", objectPosition: "40% center" },
+  { image: "/hero3.png", objectPosition: "center center" },
+  { image: "/hero2.png", objectPosition: "center top" },
 ];
 
 export default function HeroCarousel() {
@@ -28,9 +28,12 @@ export default function HeroCarousel() {
 
   return (
     <section
-      className="relative w-full h-[90vh] min-h-[600px] overflow-hidden bg-[#111111]"
+      className="relative w-full overflow-hidden bg-[#111111]"
+      style={{ height: "clamp(300px, 56vw, 90vh)", minHeight: "clamp(300px, 56vw, 90vh)" }}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={() => setIsPaused(true)}
+      onTouchEnd={() => setIsPaused(false)}
       aria-label="Hero carousel"
     >
       {/* Slides */}
@@ -43,42 +46,60 @@ export default function HeroCarousel() {
           transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="absolute inset-0"
         >
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: `url('${slides[current].image}')` }}
+          {/* Mobile: object-contain agar gambar tidak terpotong */}
+          <img
+            src={slides[current].image}
+            alt={`Slide ${current + 1}`}
+            className="w-full h-full
+                       object-contain sm:object-cover
+                       select-none pointer-events-none"
+            style={{ objectPosition: slides[current].objectPosition }}
+            draggable={false}
             aria-hidden="true"
           />
+          {/* Subtle dark overlay hanya di mobile agar dot/arrow tetap terbaca */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent sm:hidden" />
         </motion.div>
       </AnimatePresence>
 
       {/* Arrow navigation */}
       <button
         onClick={prev}
-        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-colors"
-        aria-label="Previous slide"
+        className="absolute left-3 sm:left-8 top-1/2 -translate-y-1/2 z-20
+                   w-8 h-8 sm:w-10 sm:h-10 rounded-full
+                   bg-white/10 backdrop-blur-sm border border-white/20
+                   flex items-center justify-center text-white
+                   hover:bg-white/20 active:bg-white/30
+                   transition-colors touch-manipulation"
+        aria-label="Slide sebelumnya"
       >
-        <ChevronLeft className="w-5 h-5" />
+        <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
       </button>
       <button
         onClick={next}
-        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-colors"
-        aria-label="Next slide"
+        className="absolute right-3 sm:right-8 top-1/2 -translate-y-1/2 z-20
+                   w-8 h-8 sm:w-10 sm:h-10 rounded-full
+                   bg-white/10 backdrop-blur-sm border border-white/20
+                   flex items-center justify-center text-white
+                   hover:bg-white/20 active:bg-white/30
+                   transition-colors touch-manipulation"
+        aria-label="Slide berikutnya"
       >
-        <ChevronRight className="w-5 h-5" />
+        <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
       </button>
 
       {/* Dot indicators */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+      <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
         {slides.map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrent(i)}
-            className={`rounded-full transition-all duration-300 ${
+            className={`rounded-full transition-all duration-300 touch-manipulation ${
               i === current
-                ? "w-6 h-2 bg-[#FE7108]"
+                ? "w-5 h-2 sm:w-6 sm:h-2 bg-[#FE7108]"
                 : "w-2 h-2 bg-white/50 hover:bg-white/80"
             }`}
-            aria-label={`Go to slide ${i + 1}`}
+            aria-label={`Pergi ke slide ${i + 1}`}
           />
         ))}
       </div>
