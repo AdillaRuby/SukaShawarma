@@ -8,7 +8,7 @@ import { outlets } from "@/data/outlets";
 const OutletMap = dynamic(() => import("./OutletMap"), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-[780px] rounded-[28px] bg-[#e8e3dc] animate-pulse flex items-center justify-center">
+    <div className="w-full h-[400px] md:h-[600px] lg:h-[780px] rounded-[28px] bg-[#e8e3dc] animate-pulse flex items-center justify-center">
       <p className="text-[#6E1A10]/40 text-sm font-medium">Memuat peta...</p>
     </div>
   ),
@@ -50,7 +50,7 @@ export default function Locations() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full h-[780px] rounded-[28px] overflow-hidden
+          className="relative w-full h-[400px] md:h-[600px] lg:h-[780px] rounded-[28px] overflow-hidden
                      shadow-layered-lg
                      border border-black/[0.04] z-[50] transform-gpu"
         >

@@ -35,7 +35,7 @@ export default function AuthenticExperience() {
       }}
     >
       {/* Ambient glow */}
-      <div className="absolute top-1/3 left-1/4 w-[600px] h-[600px] rounded-full
+      <div className="absolute top-1/3 left-1/4 w-[90vw] max-w-[600px] h-[600px] rounded-full
                       bg-[#FE7108]/10 blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-10 relative">

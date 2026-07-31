@@ -62,7 +62,7 @@ export default function FounderStory() {
         {/* Content grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-          {/* Left — photo grid */}
+          {/* Left — photo grid: hidden di mobile, tampil di lg */}
           <motion.div
             initial={{ opacity: 0, x: -32 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -70,9 +70,10 @@ export default function FounderStory() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="relative"
           >
+            {/* Desktop: 3-col fixed-height grid */}
             <div
               style={{ height: totalH, gap: GAP }}
-              className="grid grid-cols-3 rounded-2xl overflow-hidden
+              className="hidden lg:grid grid-cols-3 rounded-2xl overflow-hidden
                          shadow-[0_16px_48px_rgba(0,0,0,0.12)]"
             >
               <div style={{ gap: GAP }} className="flex flex-col">
@@ -89,7 +90,24 @@ export default function FounderStory() {
                 <Photo src="/founderstory/Screenshot 2026-07-30 090656.png" alt="Bahan segar" rowSpan={2} delay={0.16} />
               </div>
             </div>
+
+            {/* Mobile: 2-col grid sederhana */}
+            <div className="grid lg:hidden grid-cols-2 gap-2 rounded-2xl overflow-hidden
+                            shadow-[0_16px_48px_rgba(0,0,0,0.12)]">
+              <div className="relative aspect-[3/4] overflow-hidden bg-[#d6cfc6] rounded-xl">
+                <img src="/founder.jpeg" alt="Founder" className="absolute inset-0 w-full h-full object-cover" />
+              </div>
+              <div className="flex flex-col gap-2">
+                <div className="relative aspect-square overflow-hidden bg-[#d6cfc6] rounded-xl">
+                  <img src="/founderstory/Screenshot 2026-07-30 092535.png" alt="Outlet" className="absolute inset-0 w-full h-full object-cover" />
+                </div>
+                <div className="relative aspect-square overflow-hidden bg-[#d6cfc6] rounded-xl">
+                  <img src="/founderstory/Screenshot 2026-07-30 090804.png" alt="Suasana" className="absolute inset-0 w-full h-full object-cover" />
+                </div>
+              </div>
+            </div>
           </motion.div>
+
 
           {/* Right — text */}
           <motion.div
