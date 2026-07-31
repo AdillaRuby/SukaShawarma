@@ -44,25 +44,96 @@ export default function FounderStory() {
   return (
     <section
       id="about"
-      className="relative bg-[#FAF7F2] pt-24 pb-0 overflow-visible"
+      className="relative bg-[#FAF7F2] pt-20 pb-16 lg:pt-24 lg:pb-0 overflow-hidden"
       style={{
-        borderTopLeftRadius: "clamp(48px, 8vw, 112px)",
-        borderTopRightRadius: "clamp(48px, 8vw, 112px)",
-        marginTop: "-72px",
+        borderTopLeftRadius: "clamp(32px, 6vw, 112px)",
+        borderTopRightRadius: "clamp(32px, 6vw, 112px)",
+        marginTop: "-48px",
         zIndex: 10,
         position: "relative",
       }}
     >
       {/* Ambient glow */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full
+      <div className="absolute top-0 left-0 w-[90vw] max-w-[500px] h-[500px] rounded-full
                       bg-[#FE7108]/[0.04] blur-[120px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 relative">
+      <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-10 relative">
 
-        {/* Content grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        {/* ── MOBILE LAYOUT ── */}
+        <div className="lg:hidden">
+          {/* Teks dulu di mobile */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-8"
+          >
+            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#FE7108] mb-3">
+              FOUNDER &amp; OUR BEGINNING
+            </p>
+            <h2 className="font-heading text-[1.75rem] font-bold leading-[1.15] tracking-tight text-[#111111] mb-4"
+              style={{ fontFamily: "var(--font-heading)" }}
+            >
+              <span style={{ textDecoration: "underline", textDecorationColor: "#FE7108", textUnderlineOffset: "4px" }}>Akbar Alatas</span>{" "}
+              memulai perjalanan Suka Shawarma dari{" "}
+              <span className="text-[#6E1A10]">Empang, Bogor</span>
+            </h2>
+            <div className="space-y-3 text-[#111111]/70 leading-relaxed text-sm">
+              <p>
+                Pada <strong className="text-[#111111]">12 Mei 2024</strong>,{" "}
+                <strong className="text-[#111111]">Akbar Alatas</strong> mendirikan Suka Shawarma
+                dengan visi menghadirkan shawarma berkualitas yang autentik, modern, dan
+                terjangkau untuk semua kalangan.
+              </p>
+              <p>
+                Berbekal komitmen terhadap kualitas bahan baku dan cita rasa yang konsisten,
+                Suka Shawarma terus berkembang hingga puluhan outlet di Jabodetabek.
+              </p>
+            </div>
+          </motion.div>
 
-          {/* Left — photo grid: hidden di mobile, tampil di lg */}
+          {/* Foto founder — di mobile: satu foto besar + dua foto kecil di kanan */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="grid grid-cols-[1.1fr_1fr] gap-2 rounded-2xl overflow-hidden
+                       shadow-[0_12px_32px_rgba(0,0,0,0.10)]"
+          >
+            {/* Foto founder besar di kiri */}
+            <div className="relative aspect-[3/4] overflow-hidden bg-[#d6cfc6]">
+              <img
+                src="/founder.jpeg"
+                alt="Founder Akbar Alatas"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </div>
+            {/* 2 foto kecil di kanan */}
+            <div className="flex flex-col gap-2">
+              <div className="relative flex-1 overflow-hidden bg-[#d6cfc6]">
+                <img
+                  src="/founderstory/Screenshot 2026-07-30 092535.png"
+                  alt="Outlet"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+              <div className="relative flex-1 overflow-hidden bg-[#d6cfc6]">
+                <img
+                  src="/founderstory/Screenshot 2026-07-30 090804.png"
+                  alt="Suasana"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* ── DESKTOP LAYOUT (lg+) ── */}
+        <div className="hidden lg:grid grid-cols-2 gap-20 items-center">
+
+          {/* Kiri — photo grid */}
           <motion.div
             initial={{ opacity: 0, x: -32 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -70,10 +141,9 @@ export default function FounderStory() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="relative"
           >
-            {/* Desktop: 3-col fixed-height grid */}
             <div
               style={{ height: totalH, gap: GAP }}
-              className="hidden lg:grid grid-cols-3 rounded-2xl overflow-hidden
+              className="grid grid-cols-3 rounded-2xl overflow-hidden
                          shadow-[0_16px_48px_rgba(0,0,0,0.12)]"
             >
               <div style={{ gap: GAP }} className="flex flex-col">
@@ -90,37 +160,19 @@ export default function FounderStory() {
                 <Photo src="/founderstory/Screenshot 2026-07-30 090656.png" alt="Bahan segar" rowSpan={2} delay={0.16} />
               </div>
             </div>
-
-            {/* Mobile: 2-col grid sederhana */}
-            <div className="grid lg:hidden grid-cols-2 gap-2 rounded-2xl overflow-hidden
-                            shadow-[0_16px_48px_rgba(0,0,0,0.12)]">
-              <div className="relative aspect-[3/4] overflow-hidden bg-[#d6cfc6] rounded-xl">
-                <img src="/founder.jpeg" alt="Founder" className="absolute inset-0 w-full h-full object-cover" />
-              </div>
-              <div className="flex flex-col gap-2">
-                <div className="relative aspect-square overflow-hidden bg-[#d6cfc6] rounded-xl">
-                  <img src="/founderstory/Screenshot 2026-07-30 092535.png" alt="Outlet" className="absolute inset-0 w-full h-full object-cover" />
-                </div>
-                <div className="relative aspect-square overflow-hidden bg-[#d6cfc6] rounded-xl">
-                  <img src="/founderstory/Screenshot 2026-07-30 090804.png" alt="Suasana" className="absolute inset-0 w-full h-full object-cover" />
-                </div>
-              </div>
-            </div>
           </motion.div>
 
-
-          {/* Right — text */}
+          {/* Kanan — teks */}
           <motion.div
             initial={{ opacity: 0, x: 32 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col justify-center pt-6 lg:pt-12"
+            className="flex flex-col justify-center pt-12"
           >
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#FE7108] mb-4">
-              FOUNDER & OUR BEGINNING
+              FOUNDER &amp; OUR BEGINNING
             </p>
-
             <h2
               className="font-heading text-4xl md:text-5xl font-bold
                          leading-[1.1] tracking-tight text-[#111111] mb-6"
@@ -130,10 +182,10 @@ export default function FounderStory() {
               memulai perjalanan Suka Shawarma dari satu outlet sederhana di{" "}
               <span className="text-[#6E1A10]">Empang, Bogor</span>
             </h2>
-
             <div className="space-y-4 text-[#111111]/70 leading-relaxed text-base">
               <p>
-                Pada <strong className="text-[#111111]">12 Mei 2024</strong>, <strong className="text-[#111111]">Akbar Alatas</strong>{" "}
+                Pada <strong className="text-[#111111]">12 Mei 2024</strong>,{" "}
+                <strong className="text-[#111111]">Akbar Alatas</strong>{" "}
                 mendirikan Suka Shawarma dengan visi menghadirkan shawarma berkualitas
                 yang autentik, modern, dan terjangkau untuk semua kalangan. Dimulai dari
                 satu gerai sederhana di Empang, Bogor.
@@ -147,8 +199,8 @@ export default function FounderStory() {
             </div>
           </motion.div>
         </div>
-      </div>
 
+      </div>
     </section>
   );
 }
