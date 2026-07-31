@@ -28,26 +28,33 @@ const allSlides = [
 export default function HeroCarousel() {
   const [current, setCurrent] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(true);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const mq = window.matchMedia("(min-width: 768px)");
+    setIsDesktop(mq.matches);
+
     const handler = (e: MediaQueryListEvent) => {
       setIsDesktop(e.matches);
-      setCurrent(0); // reset index saat breakpoint berubah
+      setCurrent(0);
     };
-    setIsDesktop(mq.matches);
+
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
   }, []);
 
-  const slides = isDesktop
+  const slides = mounted && isDesktop
     ? allSlides
     : allSlides.filter((s) => !s.desktopOnly);
 
+  const safeCurrent = current % slides.length;
+  const activeSlide = slides[safeCurrent] || slides[0];
+
   const next = useCallback(() => {
     setCurrent((c) => (c + 1) % slides.length);
-  }, []);
+  }, [slides.length]);
 
   const prev = () =>
     setCurrent((c) => (c - 1 + slides.length) % slides.length);
@@ -62,9 +69,8 @@ export default function HeroCarousel() {
     <section
       className="relative w-full overflow-hidden"
       style={{
-        /* 60vh di mobile agar tidak terlalu pendek, 90vh di atas md */
         height: "max(260px, 60vh)",
-        backgroundColor: slides[current].bg,
+        backgroundColor: activeSlide.bg,
         transition: "background-color 0.7s ease",
       }}
       onMouseEnter={() => setIsPaused(true)}
@@ -73,10 +79,10 @@ export default function HeroCarousel() {
       onTouchEnd={() => setIsPaused(false)}
       aria-label="Hero carousel"
     >
-      {/* Slides — object-cover di semua ukuran, tidak ada letterbox */}
+      {/* Slides */}
       <AnimatePresence mode="wait">
         <motion.div
-          key={current}
+          key={safeCurrent}
           initial={{ opacity: 0, scale: 1.04 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.97 }}
@@ -84,14 +90,13 @@ export default function HeroCarousel() {
           className="absolute inset-0"
         >
           <img
-            src={slides[current].image}
-            alt={`Slide ${current + 1}`}
+            src={activeSlide.image}
+            alt={`Slide ${safeCurrent + 1}`}
             className="w-full h-full object-cover select-none pointer-events-none"
-            style={{ objectPosition: slides[current].objectPosition }}
+            style={{ objectPosition: activeSlide.objectPosition }}
             draggable={false}
             aria-hidden="true"
           />
-          {/* Overlay tipis supaya dot & arrow tetap terbaca */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
         </motion.div>
       </AnimatePresence>
@@ -132,7 +137,7 @@ export default function HeroCarousel() {
             key={i}
             onClick={() => setCurrent(i)}
             className={`rounded-full transition-all duration-300 touch-manipulation ${
-              i === current
+              i === safeCurrent
                 ? "w-6 h-2 bg-[#FE7108] shadow-[0_0_8px_rgba(254,113,8,0.6)]"
                 : "w-2 h-2 bg-white/60 hover:bg-white"
             }`}
