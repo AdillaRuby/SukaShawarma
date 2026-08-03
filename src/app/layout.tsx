@@ -87,6 +87,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" className={`${arimo.variable} antialiased`}>
+      <head>
+        {/* Preload LCP image — hero slide pertama */}
+        <link rel="preload" as="image" href="/hero1.png" fetchPriority="high" />
+      </head>
       <body className="min-h-screen flex flex-col bg-white text-[#111111]">
         {children}
       </body>

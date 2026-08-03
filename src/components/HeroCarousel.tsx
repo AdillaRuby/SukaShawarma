@@ -8,49 +8,53 @@ const allSlides = [
   {
     image: "/hero1.png",
     bg: "#FAF7F2",
-    objectPosition: "40% center",
+    objectFit: "cover" as const,
+    objectPosition: "center 30%",
     desktopOnly: false,
   },
   {
     image: "/hero3.png",
     bg: "#FAFAFA",
+    objectFit: "contain" as const,
     objectPosition: "center center",
     desktopOnly: false,
   },
   {
     image: "/hero2.png",
     bg: "#F0EDEA",
+    objectFit: "contain" as const,
     objectPosition: "center top",
-    desktopOnly: true,   // hanya tampil di desktop (≥768px)
+    desktopOnly: true,
   },
 ];
+
+// Slides yang aman untuk SSR — tidak ada filter platform-specific
+const mobileSlides = allSlides.filter((s) => !s.desktopOnly);
 
 export default function HeroCarousel() {
   const [current, setCurrent] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  // Default ke mobileSlides agar SSR dan first paint konsisten, tidak ada reflow
+  const [slides, setSlides] = useState(mobileSlides);
 
   useEffect(() => {
-    setMounted(true);
     const mq = window.matchMedia("(min-width: 768px)");
-    setIsDesktop(mq.matches);
 
-    const handler = (e: MediaQueryListEvent) => {
-      setIsDesktop(e.matches);
-      setCurrent(0);
+    const update = (matches: boolean) => {
+      const next = matches ? allSlides : mobileSlides;
+      setSlides(next);
+      setCurrent((c) => Math.min(c, next.length - 1));
     };
 
+    update(mq.matches);
+
+    const handler = (e: MediaQueryListEvent) => update(e.matches);
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
   }, []);
 
-  const slides = mounted && isDesktop
-    ? allSlides
-    : allSlides.filter((s) => !s.desktopOnly);
-
   const safeCurrent = current % slides.length;
-  const activeSlide = slides[safeCurrent] || slides[0];
+  const activeSlide = slides[safeCurrent] ?? slides[0];
 
   const next = useCallback(() => {
     setCurrent((c) => (c + 1) % slides.length);
@@ -69,7 +73,7 @@ export default function HeroCarousel() {
     <section
       className="relative w-full overflow-hidden"
       style={{
-        height: "max(260px, 60vh)",
+        height: "max(220px, min(56vw, 600px))",
         backgroundColor: activeSlide.bg,
         transition: "background-color 0.7s ease",
       }}
@@ -79,27 +83,48 @@ export default function HeroCarousel() {
       onTouchEnd={() => setIsPaused(false)}
       aria-label="Hero carousel"
     >
-      {/* Slides */}
       <AnimatePresence mode="wait">
         <motion.div
           key={safeCurrent}
-          initial={{ opacity: 0, scale: 1.04 }}
+          initial={{ opacity: 0, scale: 1.01 }}
           animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.97 }}
+          exit={{ opacity: 0, scale: 0.99 }}
           transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="absolute inset-0"
+          className="absolute inset-0 flex items-center justify-center"
         >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={activeSlide.image}
             alt={`Slide ${safeCurrent + 1}`}
-            className="w-full h-full object-cover select-none pointer-events-none"
-            style={{ objectPosition: activeSlide.objectPosition }}
+            className="w-full h-full select-none pointer-events-none"
+            style={{
+              objectFit: activeSlide.objectFit,
+              objectPosition: activeSlide.objectPosition,
+            }}
+            fetchPriority={safeCurrent === 0 ? "high" : "low"}
+            decoding={safeCurrent === 0 ? "sync" : "async"}
             draggable={false}
             aria-hidden="true"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
         </motion.div>
       </AnimatePresence>
+
+      {/* Preload slide berikutnya secara diam-diam */}
+      {slides.map((slide, i) =>
+        i !== safeCurrent ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            key={slide.image}
+            src={slide.image}
+            alt=""
+            aria-hidden="true"
+            className="absolute opacity-0 pointer-events-none w-0 h-0"
+            fetchPriority="low"
+            decoding="async"
+          />
+        ) : null
+      )}
 
       {/* Arrow kiri */}
       <button
