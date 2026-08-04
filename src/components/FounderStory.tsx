@@ -105,7 +105,7 @@ export default function FounderStory() {
             {/* Foto founder besar di kiri */}
             <div className="relative aspect-[3/4] overflow-hidden bg-[#d6cfc6]">
               <img
-                src="/founder.jpeg"
+                src="/founderstory/Artboard 4.jpg"
                 alt="Founder Akbar Alatas"
                 className="absolute inset-0 w-full h-full object-cover"
               />
@@ -114,14 +114,14 @@ export default function FounderStory() {
             <div className="flex flex-col gap-2">
               <div className="relative flex-1 overflow-hidden bg-[#d6cfc6]">
                 <img
-                  src="/founderstory/Screenshot 2026-07-30 092535.png"
+                  src="/founderstory/Artboard 1.jpg"
                   alt="Outlet"
                   className="absolute inset-0 w-full h-full object-cover"
                 />
               </div>
               <div className="relative flex-1 overflow-hidden bg-[#d6cfc6]">
                 <img
-                  src="/founderstory/Screenshot 2026-07-30 090804.png"
+                  src="/founderstory/Artboard 2.jpg"
                   alt="Suasana"
                   className="absolute inset-0 w-full h-full object-cover"
                 />
@@ -147,17 +147,17 @@ export default function FounderStory() {
                          shadow-[0_16px_48px_rgba(0,0,0,0.12)]"
             >
               <div style={{ gap: GAP }} className="flex flex-col">
-                <Photo src="/founderstory/Screenshot 2026-07-30 092535.png" alt="Outlet" rowSpan={1} delay={0} />
-                <Photo src="/founderstory/Screenshot 2026-07-30 090804.png" alt="Suasana" rowSpan={1} delay={0.08} />
-                <Photo src="/founderstory/Screenshot 2026-07-30 092501.png" alt="Detail" rowSpan={1} delay={0.16} />
+                <Photo src="/founderstory/Artboard 1.jpg" alt="Outlet" rowSpan={1} delay={0} />
+                <Photo src="/founderstory/Artboard 2.jpg" alt="Suasana" rowSpan={1} delay={0.08} />
+                <Photo src="/founderstory/Artboard 3.jpg" alt="Detail" rowSpan={1} delay={0.16} />
               </div>
               <div style={{ gap: GAP }} className="flex flex-col">
-                <Photo src="/founder.jpeg" alt="Founder" rowSpan={2} delay={0.04} />
-                <Photo src="/founderstory/Screenshot 2026-07-30 090825.png" alt="Proses" rowSpan={1} delay={0.12} />
+                <Photo src="/founderstory/Artboard 4.jpg" alt="Founder" rowSpan={2} delay={0.04} />
+                <Photo src="/founderstory/Artboard 5.jpg" alt="Proses" rowSpan={1} delay={0.12} />
               </div>
               <div style={{ gap: GAP }} className="flex flex-col">
-                <Photo src="/founderstory/Screenshot 2026-07-30 090740.png" alt="Opening" rowSpan={1} delay={0.08} />
-                <Photo src="/founderstory/Screenshot 2026-07-30 090656.png" alt="Bahan segar" rowSpan={2} delay={0.16} />
+                <Photo src="/founderstory/Artboard 6.jpg" alt="Opening" rowSpan={1} delay={0.08} />
+                <Photo src="/founderstory/Artboard 7.jpg" alt="Bahan segar" rowSpan={2} delay={0.16} />
               </div>
             </div>
           </motion.div>
@@ -189,6 +189,9 @@ export default function FounderStory() {
                 mendirikan Suka Shawarma dengan visi menghadirkan shawarma berkualitas
                 yang autentik, modern, dan terjangkau untuk semua kalangan. Dimulai dari
                 satu gerai sederhana di Empang, Bogor.
+              </p>
+              <p>
+                Saat ini kami telah mengembangkan lebih dari <strong className="text-[#111111]">20 outlet</strong> dan membuka program kemitraan dengan keuntungan yang menarik bagi para mitra.
               </p>
               <p>
                 Berbekal komitmen terhadap kualitas bahan baku, cita rasa yang konsisten,
