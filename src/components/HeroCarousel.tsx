@@ -4,46 +4,66 @@ import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
-const allSlides = [
+type Slide = {
+  image: string;
+  bg: string;
+  objectFit: "cover" | "contain";
+  objectPosition: string;
+};
+
+// Desktop: semua slide
+const desktopSlides: Slide[] = [
   {
     image: "/hero1.png",
     bg: "#FAF7F2",
     objectFit: "cover" as const,
     objectPosition: "center 30%",
-    desktopOnly: false,
   },
   {
     image: "/hero3.png",
     bg: "#FAFAFA",
     objectFit: "contain" as const,
     objectPosition: "center center",
-    desktopOnly: false,
   },
   {
     image: "/hero2.png",
     bg: "#F0EDEA",
     objectFit: "contain" as const,
     objectPosition: "center top",
-    desktopOnly: true,
   },
 ];
 
-// Slides yang aman untuk SSR — tidak ada filter platform-specific
-const mobileSlides = allSlides.filter((s) => !s.desktopOnly);
+// Mobile: hanya hero4 dan hero1
+// hero4 ditaruh duluan supaya jadi first slide di mobile
+const mobileSlides: Slide[] = [
+  {
+    image: "/hero4.jpeg",
+    bg: "#FAF7F2",
+    objectFit: "contain" as const,
+    objectPosition: "center center",
+  },
+  {
+    image: "/hero1.png",
+    bg: "#FAF7F2",
+    objectFit: "contain" as const,
+    objectPosition: "center center",
+  },
+];
 
 export default function HeroCarousel() {
   const [current, setCurrent] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  // Default ke mobileSlides agar SSR dan first paint konsisten, tidak ada reflow
-  const [slides, setSlides] = useState(mobileSlides);
+  const [slides, setSlides] = useState<Slide[]>(mobileSlides);
+  const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 768px)");
 
     const update = (matches: boolean) => {
-      const next = matches ? allSlides : mobileSlides;
+      const next = matches ? desktopSlides : mobileSlides;
+      setIsMobile(!matches);
       setSlides(next);
-      setCurrent((c) => Math.min(c, next.length - 1));
+      setCurrent(0);
     };
 
     update(mq.matches);
@@ -73,7 +93,15 @@ export default function HeroCarousel() {
     <section
       className="relative w-full overflow-hidden"
       style={{
-        height: "max(220px, min(56vw, 600px))",
+        /*
+         * Desktop: height proporsional mengikuti lebar viewport, max 600px
+         * Mobile: pakai aspect-ratio 1:1 supaya gambar portrait tidak terpotong
+         * isMobile belum tersedia di SSR jadi pakai CSS media query via className
+         */
+        height: isMobile
+          ? "auto"
+          : "max(220px, min(56vw, 600px))",
+        aspectRatio: isMobile ? "1 / 1" : undefined,
         backgroundColor: activeSlide.bg,
         transition: "background-color 0.7s ease",
       }}
@@ -85,12 +113,12 @@ export default function HeroCarousel() {
     >
       <AnimatePresence mode="wait">
         <motion.div
-          key={safeCurrent}
+          key={`${safeCurrent}-${isMobile}`}
           initial={{ opacity: 0, scale: 1.01 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.99 }}
           transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="absolute inset-0 flex items-center justify-center"
+          className="absolute inset-0"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -106,11 +134,10 @@ export default function HeroCarousel() {
             draggable={false}
             aria-hidden="true"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
         </motion.div>
       </AnimatePresence>
 
-      {/* Preload slide berikutnya secara diam-diam */}
+      {/* Preload slide berikutnya */}
       {slides.map((slide, i) =>
         i !== safeCurrent ? (
           // eslint-disable-next-line @next/next/no-img-element
