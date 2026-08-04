@@ -16,7 +16,7 @@ export default function KemitraanWhyUs() {
       icon: "📍",
       title: "Brand Sudah Terbukti",
       description:
-        "28.000+ followers Instagram, 19+ outlet aktif Jabodetabek. Bukan bisnis baru — sudah ada fanbase loyal.",
+        "28.000+ followers Instagram, 20+ outlet aktif Jabodetabek. Bukan bisnis baru — sudah ada fanbase loyal.",
     },
     {
       icon: "🌯",

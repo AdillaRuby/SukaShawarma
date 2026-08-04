@@ -1,6 +1,6 @@
 export default function KemitraanTicker() {
   const items = [
-    "19+ Outlet Aktif",
+    "20+ Outlet Aktif",
     "100% Profit Untuk Mitra Sampai BEP",
     "Lanjut 50:50 Setelah Balik Modal",
     "0% Royalty & Potongan Omzet",

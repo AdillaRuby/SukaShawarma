@@ -18,7 +18,7 @@ export default function KemitraanCTA() {
         </p>
 
         <div className="flex flex-wrap justify-center gap-3 mb-8 text-xs sm:text-sm text-white/80">
-          <span>🏪 19+ Outlet Aktif</span>
+          <span>🏪 20+ Outlet Aktif</span>
           <span>⚡ 100% Profit Sampai BEP</span>
           <span>📈 ROI hingga 477%</span>
           <span>⏱️ BEP ~6 Bulan</span>

@@ -64,7 +64,7 @@ export default function KemitraanHero() {
           {/* Stats grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {[
-              { value: "19+", label: "Outlet Aktif", sub: "Jabodetabek" },
+              { value: "20+", label: "Outlet Aktif", sub: "Jabodetabek" },
               { value: "100%", label: "Profit Mitra", sub: "Sampai BEP" },
               { value: "~6", label: "Bulan", sub: "Balik Modal" },
               { value: "456%", label: "ROI dalam", sub: "5 Tahun" },

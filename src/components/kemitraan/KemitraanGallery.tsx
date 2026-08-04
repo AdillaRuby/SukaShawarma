@@ -129,7 +129,7 @@ export default function KemitraanGallery() {
 
         <p className="text-sm text-[#111111]/60 leading-relaxed">
           <span className="mr-1">📍</span>
-          Dan masih banyak lagi — 19+ outlet aktif se-Jabodetabek (Empang, Cimanggu, Paledang, Pajajaran, Cibinong, Ciseeng, Cibubur, Sukmajaya, Beji, Sawangan, Citayam, Dramaga, Pekayon, Tebet, dll)
+          Dan masih banyak lagi — 20+ outlet aktif se-Jabodetabek (Empang, Cimanggu, Paledang, Pajajaran, Cibinong, Ciseeng, Cibubur, Sukmajaya, Beji, Sawangan, Citayam, Dramaga, Pekayon, Tebet, dll)
           <span className="ml-2 text-[#FE7108] font-semibold">🔥 Terus Bertambah</span>
         </p>
       </div>
