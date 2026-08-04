@@ -10,6 +10,7 @@ const navLinks = [
   { label: "Beranda", href: "/" },
   { label: "Menu", href: "/menu" },
   { label: "Lokasi", href: "/locations" },
+  { label: "Kemitraan", href: "/kemitraan" },
 ];
 
 export default function Navbar() {

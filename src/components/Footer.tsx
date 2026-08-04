@@ -17,6 +17,11 @@ const footerLinks = {
     { label: "Bekasi", href: "/locations" },
     { label: "Tangerang Selatan", href: "/locations" },
   ],
+  Kemitraan: [
+    { label: "Program Kemitraan", href: "/kemitraan" },
+    { label: "Ajukan Kemitraan", href: "/kemitraan#ajukan" },
+    { label: "FAQ Kemitraan", href: "/kemitraan#faq" },
+  ],
   Pesan: [
     { label: "Pesan Sekarang", href: "https://order.sukashawarma.com/" },
     { label: "GoFood", href: "https://gofood.co.id" },
