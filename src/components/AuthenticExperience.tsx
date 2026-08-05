@@ -18,9 +18,9 @@ const features = [
   },
   {
     icon: MapPin,
-    title: "18+ Cabang",
+    title: "20+ Cabang",
     description:
-      "Sudah tersebar di 18+ titik di Jabodetabek. Makin mudah cari Suka Shawarma di dekatmu.",
+      "Sudah tersebar di 20+ titik di Jabodetabek. Makin mudah cari Suka Shawarma di dekatmu.",
   },
 ];
 
