@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+
+interface NavbarProps {
+  pathname?: string;
+}
 
 const navLinks = [
   { label: "Beranda", href: "/" },
@@ -13,10 +14,9 @@ const navLinks = [
   { label: "Kemitraan", href: "/kemitraan" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ pathname = "/" }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const pathname = usePathname();
 
   useEffect(() => {
     const handler = () => setIsScrolled(window.scrollY > 10);
@@ -34,8 +34,8 @@ export default function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-6 lg:px-10 h-[68px] flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 shrink-0">
-          <Image
+        <a href="/" className="flex items-center gap-2.5 shrink-0">
+          <img
             src="/sslogonew.png"
             alt="Suka Shawarma"
             width={38}
@@ -45,7 +45,7 @@ export default function Navbar() {
           <span className="font-bold text-[#6E1A10] text-[13px] tracking-widest uppercase leading-tight">
             Suka<br />Shawarma
           </span>
-        </Link>
+        </a>
 
         {/* Desktop nav links */}
         <ul className="hidden md:flex items-center gap-1">
@@ -55,7 +55,7 @@ export default function Navbar() {
               : pathname.startsWith(link.href);
             return (
               <li key={link.label}>
-                <Link
+                <a
                   href={link.href}
                   className={`relative px-3.5 py-2 rounded-lg text-[13px] font-medium
                               transition-all duration-150 group
@@ -74,7 +74,7 @@ export default function Navbar() {
                                   : "scale-x-0 opacity-0 group-hover:scale-x-100 group-hover:opacity-40"
                                 }`}
                   />
-                </Link>
+                </a>
               </li>
             );
           })}
@@ -112,14 +112,14 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="md:hidden bg-white border-t border-black/[0.06] px-6 py-5 flex flex-col gap-1">
           {navLinks.map((link) => (
-            <Link
+            <a
               key={link.label}
               href={link.href}
               onClick={() => setMobileOpen(false)}
               className="px-3 py-2.5 rounded-lg text-[14px] font-medium text-[#111111]/70 hover:text-[#111111] hover:bg-black/[0.04] transition-all"
             >
               {link.label}
-            </Link>
+            </a>
           ))}
           <div className="mt-3 pt-3 border-t border-black/[0.06]">
             <a

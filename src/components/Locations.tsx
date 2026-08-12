@@ -1,20 +1,22 @@
 "use client";
 
-import dynamic from "next/dynamic";
+import { lazy, Suspense, useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { outlets } from "@/data/outlets";
 
 // Lazy load — Leaflet is client-only and heavy
-const OutletMap = dynamic(() => import("./OutletMap"), {
-  ssr: false,
-  loading: () => (
-    <div className="w-full h-[400px] md:h-[600px] lg:h-[780px] rounded-[28px] bg-[#e8e3dc] animate-pulse flex items-center justify-center">
-      <p className="text-[#6E1A10]/40 text-sm font-medium">Memuat peta...</p>
-    </div>
-  ),
-});
+const OutletMap = lazy(() => import("./OutletMap"));
+
+const MapFallback = () => (
+  <div className="w-full h-[400px] md:h-[600px] lg:h-[780px] rounded-[28px] bg-[#e8e3dc] animate-pulse flex items-center justify-center">
+    <p className="text-[#6E1A10]/40 text-sm font-medium">Memuat peta...</p>
+  </div>
+);
 
 export default function Locations() {
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => setIsMounted(true), []);
+
   return (
     <section id="locations" className="relative py-20 lg:py-28 bg-white overflow-hidden">
       {/* Layer 1 (z-[10]): Ambient warmth backdrop glow */}
@@ -60,7 +62,13 @@ export default function Locations() {
             20+ Outlet Active
           </div>
 
-          <OutletMap outlets={outlets} />
+          {isMounted ? (
+            <Suspense fallback={<MapFallback />}>
+              <OutletMap outlets={outlets} />
+            </Suspense>
+          ) : (
+            <MapFallback />
+          )}
         </motion.div>
 
         {/* Footer note */}

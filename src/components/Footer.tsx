@@ -1,5 +1,4 @@
-import Link from "next/link";
-import Image from "next/image";
+
 
 const footerLinks = {
   Menu: [
@@ -38,7 +37,7 @@ export default function Footer() {
         {/* Top — logo + tagline */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mb-12 pb-12 border-b border-black/[0.06]">
           <div className="flex items-center gap-3">
-            <Image
+            <img
               src="/sslogonew.png"
               alt="Suka Shawarma"
               width={40}
@@ -78,12 +77,12 @@ export default function Footer() {
                           {link.label}
                         </a>
                       ) : (
-                        <Link
+                        <a
                           href={link.href}
                           className="text-sm text-[#111111]/55 hover:text-[#6E1A10] transition-colors duration-200"
                         >
                           {link.label}
-                        </Link>
+                        </a>
                       )}
                     </li>
                   );

@@ -1,4 +1,3 @@
-import Image from "next/image";
 
 export default function KemitraanFooter() {
   return (
@@ -8,7 +7,7 @@ export default function KemitraanFooter() {
                         justify-between gap-8 mb-8 pb-8 border-b border-white/10">
           {/* Brand */}
           <div className="flex items-center gap-3">
-            <Image
+            <img
               src="/sslogonew.png"
               alt="SukaShawarma"
               width={40}

@@ -2,7 +2,6 @@
 
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
-import Link from "next/link";
 
 // Best Seller items — source of truth in src/data/menu.ts
 const bestSellers = [
@@ -89,14 +88,14 @@ export default function BestSeller() {
               </p>
 
               {/* CTA (Layer 6) */}
-              <Link
+              <a
                 href="/menu"
                 className="inline-flex items-center gap-1 text-sm font-semibold
                            text-[#FE7108] hover:gap-2 transition-all duration-200 group/link mt-auto relative z-[60]"
               >
                 Lihat Menu Lengkap
                 <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 transition-transform duration-200 transform-gpu" />
-              </Link>
+              </a>
             </motion.div>
           ))}
         </motion.div>
