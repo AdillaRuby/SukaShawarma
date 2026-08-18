@@ -29,7 +29,7 @@ export default function HomePage() {
 
         {/* 3. Founder Story */}
         <FounderStory />
-
+   
         {/* 4. Best Seller */}
         <BestSeller />
 

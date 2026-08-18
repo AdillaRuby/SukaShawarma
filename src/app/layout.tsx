@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     "suka shawarma",
     "kebab",
     "kuliner bogor",
-    "shawarma jabodetabek",
+    "shawarma jabodetabek", 
     "makanan timur tengah",
     "halal",
   ],
