@@ -11,7 +11,7 @@ type Slide = {
   objectPosition: string;
 };
 
-// Desktop: menggunakan hero1, hero2, hero3 dengan posisi yang diperbaiki
+// Desktop: hero1, hero2, hero3
 const desktopSlides: Slide[] = [
   {
     image: "/hero1.png",
@@ -33,7 +33,7 @@ const desktopSlides: Slide[] = [
   },
 ];
 
-// Mobile: menggunakan hero4 dan hero1 dengan rasio yang lebih baik
+// Mobile: semua gambar hero termasuk hero4
 const mobileSlides: Slide[] = [
   {
     image: "/hero4.jpeg",
@@ -44,6 +44,18 @@ const mobileSlides: Slide[] = [
   {
     image: "/hero1.png",
     bg: "#FAF7F2",
+    objectFit: "contain" as const,
+    objectPosition: "center center",
+  },
+  {
+    image: "/hero2.png",
+    bg: "#F0EDEA",
+    objectFit: "contain" as const,
+    objectPosition: "center center",
+  },
+  {
+    image: "/hero3.png",
+    bg: "#FAFAFA",
     objectFit: "contain" as const,
     objectPosition: "center center",
   },
