@@ -1,6 +1,5 @@
 ---
-// Route: /kemitraan/v1
-// Konten dari kemitraan-v1/src/pages/index.astro
+// Route: /kemitraan-v1
 ---
 
 <!doctype html>
@@ -165,6 +164,31 @@
       .antrian-strip{grid-template-columns:1fr;}
       .antrian-item{border-right:none !important; border-top:1px solid var(--line);}
       .antrian-item:first-child{border-top:none;}
+    }
+
+    /* ── Gallery ── */
+    .gallery-section{padding:80px 0; background:var(--paper);}
+    .gallery-section .section-head{margin-bottom:36px;}
+    .gallery-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px;}
+    .gallery-grid .gitem{border-radius:10px; overflow:hidden; aspect-ratio:4/3;}
+    .gallery-grid .gitem img{width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.4s ease;}
+    .gallery-grid .gitem:hover img{transform:scale(1.06);}
+    .gallery-grid .gitem.wide{grid-column:span 2;}
+    /* menu section */
+    .menu-section{padding:70px 0; background:var(--cream);}
+    .menu-section .section-head{margin-bottom:36px;}
+    .menu-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+    .mcard{background:var(--paper); border-radius:12px; padding:20px 16px; text-align:center; box-shadow:0 4px 16px rgba(35,28,21,0.08); transition:transform 0.3s ease, box-shadow 0.3s ease;}
+    .mcard:hover{transform:translateY(-6px); box-shadow:0 12px 32px rgba(35,28,21,0.14);}
+    .mcard img{width:100%; aspect-ratio:1; object-fit:contain; margin-bottom:10px;}
+    .mcard span{font-size:13px; font-weight:600; color:var(--maroon); font-family:'Space Mono', monospace; display:block;}
+    @media(max-width:860px){
+      .gallery-grid{grid-template-columns:repeat(2,1fr);}
+      .gallery-grid .gitem.wide{grid-column:span 1;}
+      .menu-grid{grid-template-columns:repeat(2,1fr);}
+    }
+    @media(max-width:520px){
+      .menu-grid{grid-template-columns:repeat(2,1fr);}
     }
   </style>
 </head>
@@ -407,6 +431,48 @@
         <button class="faq-q"><span>Setelah kontrak 5 tahun habis, gimana?</span><span class="plus">+</span></button>
         <div class="faq-a"><p>Kontrak bisa diperpanjang atas kesepakatan bersama. Aset fisik seperti peralatan dan renovasi tetap jadi milikmu sesuai perjanjian awal.</p></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery Section: Outlet -->
+<section class="gallery-section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Outlet Kami</span>
+      <h2>Lihat sendiri, bukan sekadar janji</h2>
+      <p>20+ titik aktif yang sudah berjalan. Ini sebagian wajahnya.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gitem wide"><img src="/kemitraan/FOTO OUTLET SS/TEBET/TEBET (1).JPG" alt="Outlet Tebet" loading="lazy"></div>
+      <div class="gitem"><img src="/kemitraan/FOTO OUTLET SS/CIBINONG/CIBINONG (2).JPG" alt="Outlet Cibinong" loading="lazy"></div>
+      <div class="gitem"><img src="/kemitraan/FOTO OUTLET SS/JATIASIH/JATIASIH (3).JPG" alt="Outlet Jatiasih" loading="lazy"></div>
+      <div class="gitem"><img src="/kemitraan/FOTO OUTLET SS/SAWANGAN/SAWANGAN (2).JPG" alt="Outlet Sawangan" loading="lazy"></div>
+      <div class="gitem wide"><img src="/kemitraan/FOTO OUTLET SS/TEBET/TEBET (2).JPG" alt="Outlet Tebet 2" loading="lazy"></div>
+      <div class="gitem"><img src="/kemitraan/FOTO OUTLET SS/PEKAYON/PEKAYON (1).JPG" alt="Outlet Pekayon" loading="lazy"></div>
+      <div class="gitem"><img src="/kemitraan/FOTO OUTLET SS/EMPANG/EMPANG (1).jpg" alt="Outlet Empang" loading="lazy"></div>
+      <div class="gitem"><img src="/kemitraan/FOTO OUTLET SS/BEJI/BEJI (1).JPG" alt="Outlet Beji" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Menu Section -->
+<section class="menu-section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Menu Andalan</span>
+      <h2>Produk yang bikin orang balik lagi</h2>
+      <p>Shawarma autentik dengan harga mulai 20rb-an — ini yang dijual tiap hari di semua outlet.</p>
+    </div>
+    <div class="menu-grid">
+      <div class="mcard"><img src="/menus/SS_SUKA_CHICKEN.png" alt="Suka Chicken" loading="lazy"><span>Suka Chicken</span></div>
+      <div class="mcard"><img src="/menus/SS_SUKA_BEEF.png" alt="Suka Beef" loading="lazy"><span>Suka Beef</span></div>
+      <div class="mcard"><img src="/menus/SS_SHAWARMIE_AYAM.png" alt="Shawarmie Ayam" loading="lazy"><span>Shawarmie Ayam</span></div>
+      <div class="mcard"><img src="/menus/SS_SHAWARMIE_SAPI.png" alt="Shawarmie Sapi" loading="lazy"><span>Shawarmie Sapi</span></div>
+      <div class="mcard"><img src="/menus/ORI SHAWARMA MIX.png" alt="Shawarma Mix" loading="lazy"><span>Shawarma Mix</span></div>
+      <div class="mcard"><img src="/menus/SS_SUKA_SAMYANG.png" alt="Suka Samyang" loading="lazy"><span>Suka Samyang</span></div>
+      <div class="mcard"><img src="/menus/SS_SUKA_FRIED_CHICKEN.png" alt="Suka Fried Chicken" loading="lazy"><span>Suka Fried Chicken</span></div>
+      <div class="mcard"><img src="/menus/ORI AYAM.png" alt="Ori Ayam" loading="lazy"><span>Ori Ayam</span></div>
     </div>
   </div>
 </section>

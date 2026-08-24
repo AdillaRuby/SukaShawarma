@@ -120,6 +120,34 @@
     .antrian-strip{grid-template-columns:1fr;}
     .dotgrid{grid-template-columns:repeat(5,1fr);}
   }
+
+  /* ── Gallery ── */
+  .gallery-section{padding:80px 0; background:var(--paper);}
+  .gallery-section .section-head{margin-bottom:36px;}
+  .gallery-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px;}
+  .gallery-grid .gitem{border-radius:var(--radius); overflow:hidden; aspect-ratio:4/3;}
+  .gallery-grid .gitem img{width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.4s ease;}
+  .gallery-grid .gitem:hover img{transform:scale(1.06);}
+  .gallery-grid .gitem.wide{grid-column:span 2;}
+  /* menu section */
+  .menu-section{padding:70px 0; background:var(--cream);}
+  .menu-section .section-head{margin-bottom:36px;}
+  .menu-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+  .mcard{background:var(--paper); border-radius:var(--radius); padding:20px 16px; text-align:center; box-shadow:0 4px 16px rgba(35,28,21,0.08); transition:transform 0.3s ease, box-shadow 0.3s ease;}
+  .mcard:hover{transform:translateY(-6px); box-shadow:0 12px 32px rgba(35,28,21,0.14);}
+  .mcard img{width:100%; aspect-ratio:1; object-fit:contain; margin-bottom:10px;}
+  .mcard span{font-size:13px; font-weight:600; color:var(--forest); font-family:'Space Mono', monospace; display:block;}
+  @media(max-width:860px){
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .gallery-grid .gitem.wide{grid-column:span 1;}
+    .menu-grid{grid-template-columns:repeat(2,1fr);}
+    .progress-wrap{padding:26px 22px;}
+  }
+  @media(max-width:520px){
+    .antrian-strip{grid-template-columns:1fr;}
+    .dotgrid{grid-template-columns:repeat(5,1fr);}
+    .menu-grid{grid-template-columns:repeat(2,1fr);}
+  }
 </style>
 </head>
 <body>
@@ -257,6 +285,48 @@
       <div class="faq-item"><button class="faq-q"><span>Boleh pilih lokasi outlet sendiri?</span><span class="plus">+</span></button><div class="faq-a"><p>Boleh, tapi tim kami tetap survey dan analisis kelayakan lokasi dulu sebelum dieksekusi, biar posisinya masuk hitungan strategis menuju 50 titik.</p></div></div>
       <div class="faq-item"><button class="faq-q"><span>Berapa lama dari daftar sampai outlet buka?</span><span class="plus">+</span></button><div class="faq-a"><p>Rata-rata 4–8 minggu dari tanda tangan MoU sampai grand opening, tergantung kesiapan lokasi dan perizinan setempat.</p></div></div>
       <div class="faq-item"><button class="faq-q"><span>Setelah kontrak 5 tahun habis, gimana?</span><span class="plus">+</span></button><div class="faq-a"><p>Kontrak bisa diperpanjang atas kesepakatan bersama. Aset fisik tetap jadi milikmu sesuai perjanjian awal.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery Section: Outlet -->
+<section class="gallery-section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Lihat Sendiri</span>
+      <h2>30 slot kosong. Ini yang sudah terisi.</h2>
+      <p>Tiap foto adalah titik nyata yang sudah beroperasi — bukan simulasi, bukan render.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gitem wide"><img src="/kemitraan/FOTO OUTLET SS/TEBET/TEBET (1).JPG" alt="Outlet Tebet" loading="lazy"></div>
+      <div class="gitem"><img src="/kemitraan/FOTO OUTLET SS/CIBINONG/CIBINONG (2).JPG" alt="Outlet Cibinong" loading="lazy"></div>
+      <div class="gitem"><img src="/kemitraan/FOTO OUTLET SS/JATIASIH/JATIASIH (3).JPG" alt="Outlet Jatiasih" loading="lazy"></div>
+      <div class="gitem"><img src="/kemitraan/FOTO OUTLET SS/SAWANGAN/SAWANGAN (2).JPG" alt="Outlet Sawangan" loading="lazy"></div>
+      <div class="gitem wide"><img src="/kemitraan/FOTO OUTLET SS/TEBET/TEBET (2).JPG" alt="Outlet Tebet 2" loading="lazy"></div>
+      <div class="gitem"><img src="/kemitraan/FOTO OUTLET SS/JAGAKARSA/JAGAKARSA (1).JPG" alt="Outlet Jagakarsa" loading="lazy"></div>
+      <div class="gitem"><img src="/kemitraan/FOTO OUTLET SS/KALISARI/KALISARI (1).JPG" alt="Outlet Kalisari" loading="lazy"></div>
+      <div class="gitem"><img src="/kemitraan/FOTO OUTLET SS/CITAYAM/CITAYAM (2).JPG" alt="Outlet Citayam" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Menu Section -->
+<section class="menu-section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Menu Andalan</span>
+      <h2>Produk yang dijual tiap hari di semua titik</h2>
+      <p>Shawarma autentik dengan harga mulai 20rb-an. Ini yang bikin pelanggan balik lagi.</p>
+    </div>
+    <div class="menu-grid">
+      <div class="mcard"><img src="/menus/SS_SUKA_CHICKEN.png" alt="Suka Chicken" loading="lazy"><span>Suka Chicken</span></div>
+      <div class="mcard"><img src="/menus/SS_SUKA_BEEF.png" alt="Suka Beef" loading="lazy"><span>Suka Beef</span></div>
+      <div class="mcard"><img src="/menus/SS_SHAWARMIE_AYAM.png" alt="Shawarmie Ayam" loading="lazy"><span>Shawarmie Ayam</span></div>
+      <div class="mcard"><img src="/menus/SS_SHAWARMIE_SAPI.png" alt="Shawarmie Sapi" loading="lazy"><span>Shawarmie Sapi</span></div>
+      <div class="mcard"><img src="/menus/ORI SHAWARMA MIX.png" alt="Shawarma Mix" loading="lazy"><span>Shawarma Mix</span></div>
+      <div class="mcard"><img src="/menus/SS_SUKA_SAMYANG.png" alt="Suka Samyang" loading="lazy"><span>Suka Samyang</span></div>
+      <div class="mcard"><img src="/menus/SS_SUKA_FRIED_CHICKEN.png" alt="Fried Chicken" loading="lazy"><span>Suka Fried Chicken</span></div>
+      <div class="mcard"><img src="/menus/ORI AYAM.png" alt="Ori Ayam" loading="lazy"><span>Ori Ayam</span></div>
     </div>
   </div>
 </section>
