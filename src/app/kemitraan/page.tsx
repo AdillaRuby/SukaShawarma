@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import KemitraanHero from "@/components/kemitraan/KemitraanHero";
-import KemitraanTicker from "@/components/kemitraan/KemitraanTicker";
+import KemitraanStats from "@/components/kemitraan/KemitraanStats";
 import KemitraanAbout from "@/components/kemitraan/KemitraanAbout";
-import KemitraanWhyUs from "@/components/kemitraan/KemitraanWhyUs";
-import KemitraanGallery from "@/components/kemitraan/KemitraanGallery";
-import KemitraanPackages from "@/components/kemitraan/KemitraanPackages";
+import KemitraanReality from "@/components/kemitraan/KemitraanReality";
+import KemitraanSimulation from "@/components/kemitraan/KemitraanSimulation";
 import KemitraanProfit from "@/components/kemitraan/KemitraanProfit";
-import KemitraanROI from "@/components/kemitraan/KemitraanROI";
-import KemitraanCalculator from "@/components/kemitraan/KemitraanCalculator";
+import KemitraanPackages from "@/components/kemitraan/KemitraanPackages";
 import KemitraanSteps from "@/components/kemitraan/KemitraanSteps";
 import KemitraanFAQ from "@/components/kemitraan/KemitraanFAQ";
 import KemitraanCTA from "@/components/kemitraan/KemitraanCTA";
@@ -30,14 +28,12 @@ export default function KemitraanPage() {
       <Navbar />
       <main className="pt-[68px]">
         <KemitraanHero />
-        <KemitraanTicker />
+        <KemitraanStats />
         <KemitraanAbout />
-        <KemitraanWhyUs />
-        <KemitraanGallery />
-        <KemitraanPackages />
+        <KemitraanReality />
+        <KemitraanSimulation />
         <KemitraanProfit />
-        <KemitraanROI />
-        <KemitraanCalculator />
+        <KemitraanPackages />
         <KemitraanSteps />
         <KemitraanFAQ />
         <KemitraanCTA />

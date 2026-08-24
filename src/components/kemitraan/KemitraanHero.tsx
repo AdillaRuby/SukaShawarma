@@ -1,82 +1,74 @@
+"use client";
+
+import { motion } from "motion/react";
+import { ArrowDown } from "lucide-react";
+
 export default function KemitraanHero() {
   return (
-    <section className="relative bg-[#6E1A10] overflow-hidden py-16 lg:py-36">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="max-w-3xl">
-          <p className="text-xs font-semibold tracking-[0.22em] uppercase text-[#FFC500] mb-4">
-            🔥 Slot Mitra Terbatas — Daftar Sekarang
-          </p>
+    <section className="relative min-h-screen bg-gradient-to-br from-[#FAF7F2] via-[#F5F1EC] to-[#F0EBE5] overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-[#6E1A10] blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-40 h-40 rounded-full bg-[#FE7108] blur-3xl"></div>
+      </div>
 
-          <h1 className="font-bold text-3xl md:text-5xl lg:text-6xl leading-[1.08] tracking-tight text-white mb-2">
-            100% Profit Untukmu
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-20 pb-16">
+        
+        {/* Header Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-8"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full text-sm font-medium text-[#6E1A10] border border-[#6E1A10]/20">
+            <span>Bogor</span>
+            <span className="w-1 h-1 bg-[#FE7108] rounded-full"></span>
+            <span>Jabodetabek</span>
+          </div>
+        </motion.div>
+
+        {/* Main Headline */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-center mb-12"
+        >
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[#111111] leading-[1.1] mb-6">
+            Setiap antrian yang kamu lihat,{" "}
+            <span className="text-[#6E1A10]">ada yang ngelolanya dari rumah.</span>
           </h1>
-          <h2 className="font-bold text-2xl md:text-4xl leading-[1.1] tracking-tight text-white mb-2">
-            Sampai Balik Modal,
-          </h2>
-          <h2 className="font-bold text-2xl md:text-4xl leading-[1.1] tracking-tight text-[#FE7108] mb-6">
-            Lanjut 50:50 Selamanya
-          </h2>
-
-          <p className="text-white/75 text-lg leading-relaxed mb-6 max-w-xl">
-            Kami mau kamu balik modal dulu — baru kami ikut untung. Sistem 2 fase ini yang bikin mitra
-            kami BEP 2x lebih cepat dari franchise biasa.
-          </p>
-
-          <p className="font-bold text-[#FFC500] text-sm tracking-wide mb-8">
-            🚀 BALIK MODAL DULU, BARU BAGI HASIL
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 mb-12">
-            <a
-              href="#paket"
-              className="inline-flex items-center justify-center px-8 py-3.5 rounded-full
-                         min-h-[48px] w-full sm:w-auto
-                         bg-[#FE7108] text-white font-semibold text-sm
-                         hover:bg-[#E86300] transition-colors duration-200"
-            >
-              Lihat Paket Investasi
-            </a>
-            <a
-              href="#roi"
-              className="inline-flex items-center justify-center px-8 py-3.5 rounded-full
-                         min-h-[48px] w-full sm:w-auto
-                         border-2 border-white text-white font-semibold text-sm
-                         hover:bg-white hover:text-[#6E1A10] transition-colors duration-200"
-            >
-              Hitung ROI Saya →
-            </a>
+          
+          <div className="max-w-4xl mx-auto space-y-6">
+            <p className="text-lg md:text-xl text-[#111111]/70 leading-relaxed">
+              20+ outlet Suka Shawarma jalan tiap hari di Jabodetabek. Sebagian dipegang orang yang latar belakangnya bukan kuliner sama sekali — cuma cek laporan lewat HP. Ini ceritanya.
+            </p>
+            
+            <p className="text-sm text-[#111111]/50 italic">
+              *Kerja sama bisnis F&B (bagi hasil operasional), bukan produk investasi finansial. Hasil bervariasi per lokasi.
+            </p>
           </div>
+        </motion.div>
 
-          {/* Trust badges row */}
-          <div className="flex flex-wrap items-center gap-6 mb-10">
-            <div className="flex items-center gap-2 text-white/80 text-sm">
-              <span>✅</span>
-              <span>Halal MUI</span>
-            </div>
-            <div className="text-white/80 text-sm">
-              <span className="font-bold text-white">28K+</span> Followers IG
-            </div>
-            <div className="text-white/80 text-sm">
-              <span className="font-bold text-white">0%</span> Royalty Fee
-            </div>
-          </div>
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center"
+        >
+          <button 
+            onClick={() => {
+              document.getElementById('story-section')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="inline-flex items-center gap-3 px-8 py-4 bg-[#6E1A10] text-white rounded-full text-lg font-semibold hover:bg-[#5A150D] transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105"
+          >
+            <span>Baca ceritanya</span>
+            <ArrowDown className="w-5 h-5" />
+          </button>
+        </motion.div>
 
-          {/* Stats grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {[
-              { value: "20+", label: "Outlet Aktif", sub: "Jabodetabek" },
-              { value: "100%", label: "Profit Mitra", sub: "Sampai BEP" },
-              { value: "~6", label: "Bulan", sub: "Balik Modal" },
-              { value: "456%", label: "ROI dalam", sub: "5 Tahun" },
-            ].map((s) => (
-              <div key={s.label} className="bg-white/10 rounded-2xl p-4 text-center">
-                <p className="font-bold text-2xl text-white">{s.value}</p>
-                <p className="text-white/70 text-xs mt-0.5">{s.label}</p>
-                <p className="text-white/50 text-xs">{s.sub}</p>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
