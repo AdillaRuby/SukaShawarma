@@ -40,48 +40,27 @@ export default function AuthenticExperience() {
 
       <div className="max-w-7xl mx-auto px-6 lg:px-10 relative">
 
-        {/* Chef illustration + headline — centered hero block */}
-        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-20 mb-20">
-
-          {/* Chef */}
-          <motion.div
-            initial={{ opacity: 0, x: -32 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="relative flex-shrink-0"
+        {/* Headline block */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center mb-20 pt-16"
+        >
+          <p className="text-xs font-semibold tracking-[0.22em] uppercase text-[#FE7108] mb-4">
+            KENAPA KAMI SPESIAL
+          </p>
+          <h2
+            className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold
+                       leading-[1.08] tracking-tight text-white"
+            style={{ fontFamily: "var(--font-heading)" }}
           >
-            <div className="absolute inset-0 rounded-full bg-[#FFC500]/10 blur-3xl" />
-            <img
-              src="/authenticexpreince.png"
-              alt="Chef Suka Shawarma"
-              className="relative w-72 lg:w-96 h-auto object-contain
-                         drop-shadow-[0_24px_48px_rgba(0,0,0,0.35)]
-                         hover:scale-[1.02] transition-transform duration-500"
-            />
-          </motion.div>
-
-          {/* Headline block */}
-          <motion.div
-            initial={{ opacity: 0, x: 32 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <p className="text-xs font-semibold tracking-[0.22em] uppercase text-[#FE7108] mb-4">
-              KENAPA KAMI SPESIAL
-            </p>
-            <h2
-              className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold
-                         leading-[1.08] tracking-tight text-white"
-              style={{ fontFamily: "var(--font-heading)" }}
-            >
-              Kenapa<br />
-              Suka Shawarma<br />
-              <span className="text-[#FE7108]">Spesial?</span>
-            </h2>
-          </motion.div>
-        </div>
+            Kenapa<br />
+            Suka Shawarma<br />
+            <span className="text-[#FE7108]">Spesial?</span>
+          </h2>
+        </motion.div>
 
         {/* 3 feature cards — floating */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6">
