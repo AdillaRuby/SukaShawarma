@@ -67,6 +67,17 @@ const siteUrl = "https://sukashawarma.vercel.app";
 		</script>
 		<!-- End Google Tag Manager -->
 
+		<!-- Google tag (gtag.js) -->
+		<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=AW-11522229721"></script>
+		<script is:inline>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'AW-11522229721');
+		</script>
+		<!-- End Google tag (gtag.js) -->
+
 		<!-- Preload LCP image -->
 		<link rel="preload" as="image" href="/hero1.png" fetchpriority="high" />
 		<slot name="head" />
