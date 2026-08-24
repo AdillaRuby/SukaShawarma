@@ -1,112 +1,100 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { ChevronDown } from "lucide-react";
 
 const faqs = [
   {
-    question: "Perlu pengalaman bisnis makanan nggak?",
-    answer: "Nggak perlu sama sekali. Tim operasional kami yang urus SDM, produksi, sampai pelayanan pelanggan — kamu cukup pantau laporan."
+    q: "Apakah saya perlu pengalaman di bisnis makanan?",
+    a: "Tidak perlu sama sekali. Tim operasional SukaShawarma yang mengelola seluruh aspek harian outlet — dari SDM, produksi, hingga pelayanan pelanggan. Kamu cukup hadir sebagai investor.",
   },
   {
-    question: "Gimana mekanisme bagi hasil 50:50-nya?",
-    answer: "Fase 1 dari bulan pertama sampai BEP (~6 bulan): 100% net profit jadi hakmu. Fase 2 setelah BEP: laba bersih dibagi 50:50 tiap bulan. Nggak ada potongan omzet atau royalty fee di kedua fase."
+    q: "Bagaimana mekanisme bagi hasil 50:50-nya?",
+    a: "Sistem kami berjalan dalam 2 fase: Fase 1 — dari bulan pertama hingga BEP tercapai (~6 bulan), 100% net profit menjadi hak mitra untuk mempercepat balik modal. Fase 2 — setelah BEP, net profit dibagi 50:50 antara mitra dan SukaShawarma setiap bulan. Sama sekali tidak ada potongan omzet atau royalty fee.",
   },
   {
-    question: "Ada royalty fee atau biaya tahunan?",
-    answer: "Nggak ada royalty fee maupun management fee, dan nggak ada potongan dari omzet sama sekali di kedua fase."
+    q: "Apakah ada royalty fee atau biaya tahunan?",
+    a: "SukaShawarma tidak memungut royalty fee ataupun management fee. Tidak ada potongan dari omzet sama sekali. Di Fase 1 kamu tetap mendapat 100% net profit agar investasi cepat kembali, dan di Fase 2 laba bersih dibagi 50:50.",
   },
   {
-    question: "Berapa lama dari daftar sampai outlet buka?",
-    answer: "Rata-rata 4–8 minggu dari tanda tangan MoU sampai grand opening, tergantung kesiapan lokasi dan perizinan setempat."
+    q: "Berapa lama proses dari daftar sampai outlet buka?",
+    a: "Rata-rata 4–8 minggu dari penandatanganan MoU hingga grand opening, tergantung kesiapan lokasi dan proses perizinan di daerah setempat.",
   },
   {
-    question: "Bedanya Paket Standard vs Own Location apa?",
-    answer: "Standard (Rp 150 Jt): kami sediakan lokasi, sewa tahun pertama sudah termasuk, tahun berikutnya ada sewa bulanan sekitar Rp 2,5 Jt. Own Location (Rp 125 Jt): cocok kalau kamu sudah punya lokasi sendiri — nggak ada biaya sewa tambahan. Skema bagi hasilnya sama untuk keduanya."
+    q: "Apa perbedaan Paket Standard vs Paket Own Location?",
+    a: "Paket Standard (Rp 150 Jt): SS menyediakan lokasi, sudah termasuk sewa tahun 1. Setelah tahun pertama, ada sewa bulanan ~Rp 2.500.000. Paket Own Location (Rp 125 Jt): Cocok jika kamu sudah punya lokasi sendiri — tidak ada biaya sewa tambahan. Keduanya menggunakan sistem BEP-First (100% net profit mitra s/d BEP, lalu 50:50).",
   },
   {
-    question: "Boleh pilih lokasi outlet sendiri?",
-    answer: "Boleh, tapi tim kami tetap survey dan analisis kelayakan lokasinya dulu sebelum dieksekusi, biar potensi bisnisnya optimal."
+    q: "Apakah mitra bisa memilih lokasi outletnya sendiri?",
+    a: "Bisa, namun tim kami akan melakukan survey dan analisis kelayakan lokasi terlebih dahulu untuk memastikan potensi bisnis yang optimal sebelum dieksekusi.",
   },
   {
-    question: "Setelah kontrak 5 tahun habis, gimana?",
-    answer: "Kontrak bisa diperpanjang atas kesepakatan bersama. Aset fisik seperti peralatan dan renovasi tetap jadi milikmu sesuai perjanjian awal."
-  }
+    q: "Apa yang terjadi setelah kontrak 5 tahun habis?",
+    a: "Kontrak dapat diperpanjang dengan kesepakatan bersama. Aset fisik (peralatan, renovasi) tetap menjadi milik Anda sesuai perjanjian awal.",
+  },
 ];
 
-export default function KemitraanFAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
+function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
+  const [open, setOpen] = useState(false);
   return (
-    <section className="py-20 lg:py-32 bg-[#FAF7F2]">
-      <div className="max-w-4xl mx-auto px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <p className="text-sm font-semibold text-[#FE7108] mb-4 tracking-wider uppercase">
-            Yang Sering Ditanya
-          </p>
-          <h2 className="text-3xl md:text-5xl font-bold text-[#111111] leading-tight">
-            Sebelum kamu tanya, ini dulu
-          </h2>
-        </motion.div>
+    <motion.div
+      initial={{ opacity: 0, y: 14 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.45, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] }}
+      className="border-b border-black/[0.07] last:border-0"
+    >
+      <button
+        onClick={() => setOpen((v) => !v)}
+        className="w-full flex items-center justify-between gap-4 py-5 text-left group"
+        aria-expanded={open}
+      >
+        <span className="font-semibold text-[#111111] text-sm md:text-base
+                         group-hover:text-[#6E1A10] transition-colors duration-200">
+          {q}
+        </span>
+        <ChevronDown
+          className={`w-5 h-5 shrink-0 text-[#6E1A10]/60 transition-transform duration-300
+                      ${open ? "rotate-180" : ""}`}
+        />
+      </button>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            className="overflow-hidden"
+          >
+            <p className="pb-5 text-sm text-[#111111]/60 leading-relaxed pr-8">{a}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+}
 
-        {/* FAQ List */}
-        <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-white rounded-2xl shadow-sm overflow-hidden"
-            >
-              <button
-                onClick={() => toggleFAQ(index)}
-                className="w-full px-6 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
-              >
-                <h3 className="font-semibold text-[#111111] pr-4">
-                  {faq.question}
-                  <span className="ml-2 text-[#6E1A10]">+</span>
-                </h3>
-                <ChevronDown
-                  className={`w-5 h-5 text-[#6E1A10] transition-transform ${
-                    openIndex === index ? 'rotate-180' : ''
-                  }`}
-                />
-              </button>
-              
-              <AnimatePresence>
-                {openIndex === index && (
-                  <motion.div
-                    initial={{ height: 0 }}
-                    animate={{ height: 'auto' }}
-                    exit={{ height: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="overflow-hidden"
-                  >
-                    <div className="px-6 pb-6 text-[#111111]/70 leading-relaxed">
-                      {faq.answer}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
+export default function KemitraanFAQ() {
+  return (
+    <section className="py-14 lg:py-28 bg-white">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <p className="text-xs font-semibold tracking-[0.22em] uppercase text-[#FE7108] mb-3">
+            FAQ
+          </p>
+          <h2 className="font-bold text-3xl md:text-5xl tracking-tight text-[#111111]"
+              style={{ fontFamily: "var(--font-heading)" }}>
+            Pertanyaan yang Sering Ditanya
+          </h2>
+        </div>
+        <div className="max-w-3xl mx-auto bg-[#FAF7F2] rounded-2xl p-5 md:p-10
+                        border border-black/[0.05]">
+          {faqs.map((faq, i) => (
+            <FAQItem key={faq.q} q={faq.q} a={faq.a} index={i} />
           ))}
         </div>
-
       </div>
     </section>
   );

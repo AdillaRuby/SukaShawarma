@@ -1,116 +1,130 @@
-"use client";
-
-import { motion } from "motion/react";
-import { Check } from "lucide-react";
-
 export default function KemitraanPackages() {
-  const packages = [
-    {
-      name: "SS Sediakan Lokasi",
-      subtitle: "Paket Standard",
-      price: "Rp 150 Jt",
-      features: [
-        { label: "License Fee", value: "Rp 25 Jt" },
-        { label: "RSF — Stok Bahan Baku", value: "Rp 50 Jt" },
-        { label: "Equipment + POS", value: "Rp 25 Jt" },
-        { label: "Renovasi & Dekorasi", value: "Rp 25 Jt" },
-        { label: "Sewa Lokasi Tahun 1", value: "Included" },
-        { label: "Sewa Bulanan (Th 2+)", value: "~Rp 2,5 Jt" }
-      ]
-    },
-    {
-      name: "Mitra Punya Lokasi",
-      subtitle: "Paket Own Location",
-      price: "Rp 125 Jt",
-      popular: true,
-      features: [
-        { label: "License Fee", value: "Rp 25 Jt" },
-        { label: "RSF — Stok Bahan Baku", value: "Rp 50 Jt" },
-        { label: "Equipment + POS", value: "Rp 25 Jt" },
-        { label: "Renovasi & Dekorasi", value: "Rp 25 Jt" },
-        { label: "Sewa Lokasi", value: "Tidak berlaku" },
-        { label: "Sewa Bulanan", value: "Gratis selamanya" }
-      ]
-    }
-  ];
-
   return (
-    <section className="py-20 lg:py-32 bg-[#FAF7F2]">
+    <section id="paket" className="py-14 lg:py-28 bg-[#FAF7F2]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <p className="text-sm font-semibold text-[#FE7108] mb-4 tracking-wider uppercase">
-            Pilihan Paket
+        <div className="text-center mb-12">
+          <p className="text-xs font-semibold tracking-[0.22em] uppercase text-[#FE7108] mb-3">
+            Pilih Paket Anda
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold text-[#111111] leading-tight mb-6">
-            Dua cara mulai, tergantung lokasimu
+          <h2 className="font-bold text-3xl md:text-5xl tracking-tight text-[#111111] mb-4"
+              style={{ fontFamily: "var(--font-heading)" }}>
+            Investasi Transparan, Proyeksi Jelas
           </h2>
-          <p className="text-lg text-[#111111]/70 max-w-3xl mx-auto">
-            Semua paket sudah termasuk setup outlet, training staf, branding, dan pendampingan operasional penuh.
+          <p className="text-[#111111]/60 max-w-xl mx-auto">
+            Pilih paket sesuai kondisi lokasi — semua sudah termasuk setup outlet, training staf,
+            branding, dan dukungan operasional penuh.
           </p>
-        </motion.div>
-
-        {/* Packages Grid */}
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-          {packages.map((pkg, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`bg-white rounded-3xl p-8 shadow-xl relative overflow-hidden ${
-                pkg.popular ? 'ring-2 ring-[#6E1A10]' : ''
-              }`}
-            >
-              {pkg.popular && (
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                  <div className="bg-[#6E1A10] text-white px-4 py-1 rounded-full text-sm font-semibold">
-                    Recommended
-                  </div>
-                </div>
-              )}
-              
-              {/* Package Header */}
-              <div className="text-center mb-8">
-                <h3 className="text-xl font-bold text-[#111111] mb-1">{pkg.name}</h3>
-                <p className="text-[#111111]/60 mb-4">{pkg.subtitle}</p>
-                <div className="text-4xl font-bold text-[#6E1A10]">{pkg.price}</div>
-              </div>
-              
-              {/* Features List */}
-              <div className="space-y-4">
-                {pkg.features.map((feature, i) => (
-                  <div key={i} className="flex justify-between items-center py-2">
-                    <span className="text-[#111111]/70">{feature.label}</span>
-                    <span className="font-semibold text-[#111111]">{feature.value}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
         </div>
 
-        {/* RSF Explanation */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="bg-white rounded-2xl p-6 text-center shadow-lg"
-        >
-          <p className="text-[#111111]/70 leading-relaxed">
-            <strong>RSF (Revolving Stock Fund):</strong> dana stok bahan baku dikelola penuh oleh tim kami — kamu nggak perlu belanja bahan baku sama sekali.
-          </p>
-        </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-8">
+          {/* Paket Standard */}
+          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-black/[0.06]
+                          shadow-[0_4px_24px_rgba(0,0,0,0.08)]">
+            <p className="text-xs font-semibold tracking-widest uppercase text-[#FE7108] mb-1">
+              Paket Standard
+            </p>
+            <p className="text-sm text-[#111111]/50 mb-4">SS Sediakan Lokasi</p>
+            <p className="font-bold text-2xl sm:text-3xl text-[#111111] mb-6"
+               style={{ fontFamily: "var(--font-heading)" }}>
+              Rp 150.000.000
+            </p>
+            <ul className="space-y-2.5 text-sm text-[#111111]/70">
+              <li className="flex justify-between">
+                <span>License Fee</span>
+                <span className="font-semibold text-[#111111]">Rp 25 Jt</span>
+              </li>
+              <li className="flex justify-between">
+                <span>RSF – Stok Bahan Baku</span>
+                <span className="font-semibold text-[#111111]">Rp 50 Jt</span>
+              </li>
+              <li className="flex justify-between">
+                <span>Equipment + POS</span>
+                <span className="font-semibold text-[#111111]">Rp 25 Jt</span>
+              </li>
+              <li className="flex justify-between">
+                <span>Renovasi & Dekorasi</span>
+                <span className="font-semibold text-[#111111]">Rp 25 Jt</span>
+              </li>
+              <li className="flex justify-between">
+                <span>Sewa Lokasi Tahun 1</span>
+                <span className="font-semibold text-[#111111]">Rp 25 Jt (Included)</span>
+              </li>
+              <li className="flex justify-between border-t border-black/[0.06] pt-2.5 mt-2.5">
+                <span>Sewa Bulanan (Tahun 2+)</span>
+                <span className="font-semibold text-[#111111]">~Rp 2.500.000 / Bln</span>
+              </li>
+            </ul>
+          </div>
 
+          {/* Paket Own Location */}
+          <div className="bg-white rounded-2xl p-6 sm:p-8 border-2 border-[#6E1A10]
+                          shadow-[0_4px_24px_rgba(110,26,16,0.12)]">
+            <p className="text-xs font-semibold tracking-widest uppercase text-[#FE7108] mb-1">
+              Paket Own Location
+            </p>
+            <p className="text-sm text-[#111111]/50 mb-4">Mitra Punya Lokasi</p>
+            <p className="font-bold text-2xl sm:text-3xl text-[#111111] mb-6"
+               style={{ fontFamily: "var(--font-heading)" }}>
+              Rp 125.000.000
+            </p>
+            <ul className="space-y-2.5 text-sm text-[#111111]/70">
+              <li className="flex justify-between">
+                <span>License Fee</span>
+                <span className="font-semibold text-[#111111]">Rp 25 Jt</span>
+              </li>
+              <li className="flex justify-between">
+                <span>RSF – Stok Bahan Baku</span>
+                <span className="font-semibold text-[#111111]">Rp 50 Jt</span>
+              </li>
+              <li className="flex justify-between">
+                <span>Equipment + POS</span>
+                <span className="font-semibold text-[#111111]">Rp 25 Jt</span>
+              </li>
+              <li className="flex justify-between">
+                <span>Renovasi & Dekorasi</span>
+                <span className="font-semibold text-[#111111]">Rp 25 Jt</span>
+              </li>
+              <li className="flex justify-between">
+                <span>Sewa Lokasi Tahun 1</span>
+                <span className="font-semibold text-[#111111]">Tidak Berlaku</span>
+              </li>
+              <li className="flex justify-between border-t border-black/[0.06] pt-2.5 mt-2.5">
+                <span>Sewa Bulanan</span>
+                <span className="font-semibold text-emerald-600">Rp 0 – Gratis Selamanya</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="max-w-4xl mx-auto bg-[#111111]/[0.04] rounded-xl p-5 mb-8 text-sm text-[#111111]/65 leading-relaxed">
+          RSF (Revolving Stock Fund) Adalah Dana Stok Bahan Baku Yang Dikelola Sepenuhnya Oleh SS. Mitra
+          Tidak Perlu Melakukan Pembelian Bahan Baku – Stok Dijaga Dan Direplenish Otomatis. Mitra Benar-Benar Tidak Perlu
+          Terlibat Dalam Operasional Apapun.
+        </div>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-4xl mx-auto mb-5">
+          <a href="https://wa.me/6282299325621"
+             target="_blank" rel="noopener noreferrer"
+             className="flex-1 inline-flex items-center justify-center px-6 py-3.5 rounded-full
+                        min-h-[48px]
+                        bg-[#6E1A10] text-white font-semibold text-sm
+                        hover:bg-[#5a1509] transition-colors duration-200 text-center">
+            AMBIL PAKET STANDARD — Rp 150 Jt
+          </a>
+          <a href="https://wa.me/6282299325621"
+             target="_blank" rel="noopener noreferrer"
+             className="flex-1 inline-flex items-center justify-center px-6 py-3.5 rounded-full
+                        min-h-[48px]
+                        bg-[#FE7108] text-white font-semibold text-sm
+                        hover:bg-[#E86300] transition-colors duration-200 text-center">
+            AMBIL PAKET OWN LOCATION — Rp 125 Jt
+          </a>
+        </div>
+
+        <p className="text-center text-xs text-[#111111]/40 max-w-xl mx-auto">
+          *Proyeksi berdasarkan rata-rata performa outlet aktif. Hasil aktual dapat bervariasi
+          tergantung lokasi dan kondisi pasar.
+        </p>
       </div>
     </section>
   );

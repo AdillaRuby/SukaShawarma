@@ -1,73 +1,56 @@
-"use client";
-
-import { motion } from "motion/react";
-
 export default function KemitraanProfit() {
   return (
-    <section className="py-20 lg:py-32 bg-white">
+    <section className="py-14 lg:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <p className="text-sm font-semibold text-[#FE7108] mb-4 tracking-wider uppercase">
+        <div className="text-center mb-12">
+          <p className="text-xs font-semibold tracking-[0.22em] uppercase text-[#FE7108] mb-3">
             Skema Bagi Hasil
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold text-[#111111] leading-tight">
-            2 fase, satu urutan: kamu untung dulu
+          <h2 className="font-bold text-3xl md:text-5xl tracking-tight text-[#111111] mb-4"
+              style={{ fontFamily: "var(--font-heading)" }}>
+            2 Fase, 1 Tujuan:{" "}
+            <span className="text-[#6E1A10]">Mitra Untung Dulu</span>
           </h2>
-        </motion.div>
+          <p className="text-[#111111]/60 max-w-xl mx-auto">
+            Sistem kami dirancang agar modal kamu kembali secepat mungkin — sebelum kami ikut
+            menikmati hasilnya.
+          </p>
+        </div>
 
-        {/* Phases Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
-          
-          {/* Phase 1 */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="bg-gradient-to-br from-[#6E1A10] to-[#8B2318] rounded-3xl p-8 text-white relative overflow-hidden"
-          >
-            {/* Background decoration */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-16 translate-x-16"></div>
-            <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full translate-y-12 -translate-x-12"></div>
-            
-            <div className="relative z-10">
-              <h3 className="text-2xl font-bold mb-2">Fase 1 — Sebelum BEP</h3>
-              <div className="text-4xl font-bold text-[#FFC500] mb-4">100% net profit untukmu</div>
-              <p className="text-white/80 leading-relaxed">
-                Seluruh keuntungan bersih outlet jadi hakmu sepenuhnya. Nggak ada potongan royalty fee sama sekali sampai modal balik.
-              </p>
-            </div>
-          </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          {/* Fase 1 */}
+          <div className="rounded-2xl p-6 sm:p-8 bg-[#FAF7F2] border border-black/[0.05]">
+            <p className="text-xs font-semibold tracking-widest uppercase text-[#FE7108] mb-3">
+              ⚡ Fase 1 – Sebelum BEP (Modal Kembali)
+            </p>
+            <h3 className="font-bold text-2xl text-[#111111] mb-4"
+                style={{ fontFamily: "var(--font-heading)" }}>
+              100% Net Profit Untuk Mitra
+            </h3>
+            <p className="text-[#111111]/65 text-sm leading-relaxed mb-5">
+              Seluruh Keuntungan Bersih Outlet Menjadi Hak Mitra. Tidak ada potongan royalty fee sama sekali.
+            </p>
+            <p className="text-sm font-semibold text-emerald-600">
+              ✅ Mitra Menerima 100% Net Profit
+            </p>
+          </div>
 
-          {/* Phase 2 */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-gradient-to-br from-[#FE7108] to-[#E86300] rounded-3xl p-8 text-white relative overflow-hidden"
-          >
-            {/* Background decoration */}
-            <div className="absolute top-0 left-0 w-28 h-28 bg-white/10 rounded-full -translate-y-14 -translate-x-14"></div>
-            <div className="absolute bottom-0 right-0 w-20 h-20 bg-white/10 rounded-full translate-y-10 translate-x-10"></div>
-            
-            <div className="relative z-10">
-              <h3 className="text-2xl font-bold mb-2">Fase 2 — Setelah BEP</h3>
-              <div className="text-4xl font-bold mb-4">50 : 50, sampai kontrak habis</div>
-              <p className="text-white/90 leading-relaxed">
-                Setelah modal kembali penuh, laba bersih dibagi rata tiap bulan. Kamu terima passive income tanpa perlu terlibat operasional apapun.
-              </p>
-            </div>
-          </motion.div>
-
+          {/* Fase 2 */}
+          <div className="rounded-2xl p-6 sm:p-8 bg-[#6E1A10] border border-[#6E1A10]">
+            <p className="text-xs font-semibold tracking-widest uppercase text-[#FFC500] mb-3">
+              💰 Fase 2 – Setelah BEP (Passive Income)
+            </p>
+            <h3 className="font-bold text-2xl text-white mb-4"
+                style={{ fontFamily: "var(--font-heading)" }}>
+              50% Mitra : 50% SS
+            </h3>
+            <p className="text-white/70 text-sm leading-relaxed mb-5">
+              Setelah Modal Kembali Sepenuhnya, Net Profit Dibagi Rata Antara Mitra Dan SS. Mitra Menikmati Passive Income Tanpa Keterlibatan Apapun Hingga Akhir Kontrak. Tidak ada royalty fee.
+            </p>
+            <p className="text-sm font-semibold text-[#FFC500]">
+              💼 Passive Income Hingga Akhir Kontrak
+            </p>
+          </div>
         </div>
       </div>
     </section>
