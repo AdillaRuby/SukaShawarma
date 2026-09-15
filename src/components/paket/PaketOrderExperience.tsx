@@ -281,12 +281,17 @@ export default function PaketOrderExperience() {
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
             transition={{ type: "spring", stiffness: 320, damping: 26 }}
             onClick={() => setCartOpen(true)}
-            className="fixed bottom-6 right-5 z-50 flex items-center gap-2.5 pl-5 pr-6 py-3.5 rounded-full
+            aria-label={`Buka keranjang, ${cartCount} pcs dipilih`}
+            className="fixed bottom-5 right-5 z-50 flex items-center justify-center w-14 h-14 rounded-full
                        bg-[#6E1A10] text-white shadow-[0_8px_28px_rgba(110,26,16,0.45)]
                        hover:bg-[#5a1509] transition-colors duration-150"
           >
             <IconCart />
-            <span className="font-semibold text-sm">{cartCount} pcs dipilih</span>
+            <span className="absolute -top-1 -right-1 min-w-[22px] h-[22px] px-1 flex items-center justify-center
+                              rounded-full bg-[#FE7108] text-white text-[11px] font-bold leading-none
+                              border-2 border-white">
+              {cartCount}
+            </span>
           </motion.button>
         )}
       </AnimatePresence>
