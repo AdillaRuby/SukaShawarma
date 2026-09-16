@@ -276,7 +276,7 @@ export default function PaketOrderExperience() {
               Susun Pesanan Kamu
             </h2>
             <p className="text-[#111111]/60 max-w-lg mx-auto mb-4">
-              Atur jumlah tiap menu sesuka hati, mau 10, 20, atau lebih juga bebas. Pesan 50 pcs shawarma ke atas otomatis dapat diskon 15%.
+              Atur jumlah menu sesuka hati mu. Min order 50pcs akan dapat diskon 15%
             </p>
             <p className="inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-xs text-[#111111]/45">
               <span><span className="font-semibold text-[#111111]/70">Paket A</span> tanpa minuman</span>
