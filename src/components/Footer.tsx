@@ -29,12 +29,12 @@ const footerLinks = {
   ],
 };
 
-// TODO: lengkapi alamat, email, dan telepon sesuai dokumen legal & kontak bisnis resmi
 const contactInfo = {
   website: { label: "sukashawarma.com", href: "https://sukashawarma.com" },
-  alamat: "Alamat sesuai dokumen legal",
-  email: "Email bisnis",
-  telepon: "Nomor bisnis",
+  alamat:
+    "Jalan Bukit Nirwana Raya No. 3, Desa/Kelurahan Mulya Harja, Kec. Bogor Selatan, Kota Bogor, Provinsi Jawa Barat 16135",
+  email: "ptsukashawarma@gmail.com",
+  telepon: "0818-0454-1031",
 };
 
 export default function Footer() {
@@ -115,9 +115,23 @@ export default function Footer() {
                   {contactInfo.website.label}
                 </a>
               </li>
-              <li>{contactInfo.alamat}</li>
-              <li>{contactInfo.email}</li>
-              <li>{contactInfo.telepon}</li>
+              <li className="leading-relaxed">{contactInfo.alamat}</li>
+              <li>
+                <a
+                  href={`mailto:${contactInfo.email}`}
+                  className="hover:text-[#6E1A10] transition-colors duration-200"
+                >
+                  {contactInfo.email}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`tel:+62${contactInfo.telepon.replace(/\D/g, "").slice(1)}`}
+                  className="hover:text-[#6E1A10] transition-colors duration-200"
+                >
+                  {contactInfo.telepon}
+                </a>
+              </li>
             </ul>
           </div>
         </div>
