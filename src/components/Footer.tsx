@@ -29,6 +29,14 @@ const footerLinks = {
   ],
 };
 
+// TODO: lengkapi alamat, email, dan telepon sesuai dokumen legal & kontak bisnis resmi
+const contactInfo = {
+  website: { label: "sukashawarma.com", href: "https://sukashawarma.com" },
+  alamat: "Alamat sesuai dokumen legal",
+  email: "Email bisnis",
+  telepon: "Nomor bisnis",
+};
+
 export default function Footer() {
   return (
     <footer id="contact" className="bg-gradient-to-b from-[#FAF7F2] to-[#f0e9df] border-t border-black/[0.06]">
@@ -56,7 +64,7 @@ export default function Footer() {
         </div>
 
         {/* Link columns */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mb-12">
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
               <h4 className="text-xs font-semibold tracking-[0.15em] uppercase text-[#111111] mb-4">
@@ -90,6 +98,28 @@ export default function Footer() {
               </ul>
             </div>
           ))}
+
+          {/* Kontak */}
+          <div>
+            <h4 className="text-xs font-semibold tracking-[0.15em] uppercase text-[#111111] mb-4">
+              Kontak
+            </h4>
+            <ul className="space-y-2.5 text-sm text-[#111111]/55">
+              <li>
+                <a
+                  href={contactInfo.website.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#6E1A10] transition-colors duration-200"
+                >
+                  {contactInfo.website.label}
+                </a>
+              </li>
+              <li>{contactInfo.alamat}</li>
+              <li>{contactInfo.email}</li>
+              <li>{contactInfo.telepon}</li>
+            </ul>
+          </div>
         </div>
 
         {/* Bottom bar */}
